@@ -3,7 +3,6 @@ node_modules/
 .idea
 .vscode
 .yarn
-yarn.lock
 .yarnrc.yml
 dist
 tmp

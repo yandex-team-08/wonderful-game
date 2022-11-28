@@ -5,6 +5,12 @@ html, body, #root {
     font-family: Inter, Apple-System, Arial, Helvetica, sans-serif;
 }
 
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 h1, h2, h3, h4 {
     font-weight: 500;
 }

@@ -17,7 +17,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": "18.2.0"
+    "node": "^16.18.1"
   },
   "devDependencies": {
     "@evilmartians/lefthook": "1.2.2",

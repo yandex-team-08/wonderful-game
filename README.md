@@ -1,7 +1,7 @@
 ### Как запускать?
 
 0. [Установите yarn](https://classic.yarnpkg.com/lang/en/docs/install) и убедитесь, что его версия `1.22.19`
-1. Убедитесь, что версия ноды `18.2.0`. Если нужно менеджить несколько версий ноды: [Шиндовс](https://github.com/nvm-sh/nvm#installing-and-updating) | [Мак/линукс](https://sdkman.io/install)
+1. Убедитесь, что версия ноды `^16.8.1`. Если нужно менеджить несколько версий ноды: [Шиндовс](https://github.com/nvm-sh/nvm#installing-and-updating) | [Мак/линукс](https://sdkman.io/install)
 2. Убедитесь что у вас установлен `docker`
 3. Выполните команду `yarn bootstrap` - это обязательный шаг, без него ничего работать не будет :)
 4. Выполните команду `yarn dev`

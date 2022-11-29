@@ -1,48 +1,37 @@
-import { IUserInfo } from '../types/pageContext'
-import { useCallback, useEffect, useState } from 'react'
-import { getUserData } from '../api/auth'
-import {
-  getUserInfoFromSessionStorage,
-  setUserInfoToSessionStorage,
-} from '../utils/sessionStorage'
-import { AUTHORIZED_ROUTES, UNAUTHORIZED_ROUTES } from '../utils/routes'
+import { useCallback } from 'react'
+import { IUserSigninReq, logout, signIn } from '../api/auth'
+import { ROUTE_PATHS } from '../utils/routes'
+import { useNavigate } from 'react-router-dom'
 
-interface IUseAuthReturn {
-  userInfo: IUserInfo | null
-  isAuthorised: boolean
-  userRoutes: typeof AUTHORIZED_ROUTES
+export interface IUseAuthReturn {
+  login: (data: IUserSigninReq) => void
+  logout: VoidFunction
 }
 
 export const useAuth = (): IUseAuthReturn => {
-  const [isAuthorised, setIsAuthorised] = useState<boolean>(false)
-  const [userInfo, setUserInfo] = useState<IUserInfo | null>(
-    getUserInfoFromSessionStorage()
-  )
+  const navigate = useNavigate()
 
-  const fetchUserInfo = useCallback(
-    () =>
-      getUserData()
-        .then(({ data }) => {
-          setUserInfo(data)
-        })
-        .catch(err => {
-          console.log(err)
-        }),
-    []
-  )
-
-  useEffect(() => {
-    fetchUserInfo()
+  const login = useCallback(async (data: IUserSigninReq) => {
+    try {
+      await signIn(data)
+      navigate(ROUTE_PATHS.login)
+    } catch (err) {
+      return err
+    }
   }, [])
 
-  useEffect(() => {
-    setUserInfoToSessionStorage(userInfo)
-    setIsAuthorised(!!userInfo)
-  }, [userInfo])
+  const logoutAction = useCallback(async () => {
+    try {
+      await logout()
+      //FIXME: если роутить на логин, не стреляет запрос к /user
+      navigate(ROUTE_PATHS.game)
+    } catch (err) {
+      console.error(err)
+    }
+  }, [])
 
   return {
-    userInfo,
-    isAuthorised,
-    userRoutes: isAuthorised ? AUTHORIZED_ROUTES : UNAUTHORIZED_ROUTES,
+    login,
+    logout: logoutAction,
   }
 }

@@ -1,11 +1,13 @@
 import { FC } from 'react'
 import Unauthorized from './Unauthorized'
 import Authorized from './Authorized'
+import { usePageContext } from '../../../../../../hooks/usePageContext'
 
 const UserControls: FC = () => {
-  const isAuthorised = false
+  const { userInfo } = usePageContext()
 
-  return <>{isAuthorised ? <Authorized /> : <Unauthorized />}</>
+  //TODO: сделать динамические импорты
+  return <>{userInfo ? <Authorized /> : <Unauthorized />}</>
 }
 
 export default UserControls

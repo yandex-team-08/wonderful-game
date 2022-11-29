@@ -1,12 +1,12 @@
 import axios, { AxiosPromise } from 'axios'
-import { YANDEX_API } from '../utils/constants'
+import { AUTH_API } from '../utils/constants'
 import { IUserInfo } from '../types/pageContext'
 
 /**
  * Получение данных пользователя
  */
 export const getUserData = (): AxiosPromise<IUserInfo> =>
-  axios.get(`${YANDEX_API}/auth/user`)
+  axios.get(`${AUTH_API}/user`, { withCredentials: true })
 
 /**
  * Логин
@@ -17,4 +17,10 @@ export interface IUserSigninReq {
 }
 
 export const signIn = (data: IUserSigninReq): AxiosPromise =>
-  axios.post(`${YANDEX_API}/auth/signin`, data)
+  axios.post(`${AUTH_API}/signin`, data, { withCredentials: true })
+
+/**
+ * Логаут
+ */
+export const logout = (): AxiosPromise =>
+  axios.post(`${AUTH_API}/logout`, {}, { withCredentials: true })

@@ -12,7 +12,7 @@ const Root: FC = () => {
     <PageWrapper>
       <Card variant="outlined" className={styles.wrapper}>
         <MainCardHeader pageName={pageName} />
-        <Outlet context={setPageName} />
+        <Outlet context={{ setPageName }} />
       </Card>
     </PageWrapper>
   )

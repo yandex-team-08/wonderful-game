@@ -9,7 +9,4 @@ export interface IUserInfo {
   avatar: string
 }
 
-export interface IPageContext {
-  userInfo: IUserInfo | null
-  isAuthorised: boolean
-}
+export type TPageContext = { userInfo: IUserInfo | null }

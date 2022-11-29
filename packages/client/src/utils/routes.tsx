@@ -1,20 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom'
 import Login from '../pages/Login'
-import { ReactNode } from 'react'
 import Signup from '../pages/Signup'
 import Root from '../pages/Root'
 import Game from '../pages/Game'
-import { getUserData, IUserSigninReq, signIn } from '../api/auth'
+import { getUserData } from '../api/auth'
 import { IUserInfo } from '../types/pageContext'
-
-interface IRoute {
-  path: string
-  element: ReactNode
-  id?: string
-  children?: IRoute[]
-  loader?: (...args: any) => void
-  action?: (...args: any) => void
-}
 
 export const ROUTE_PATHS = {
   root: '/',
@@ -26,7 +16,7 @@ export const ROUTE_PATHS = {
 /**
  * Login page
  */
-const LOGIN: IRoute = {
+const LOGIN: NonIndexRouteObject = {
   path: ROUTE_PATHS.login,
   element: <Login />,
 }
@@ -34,7 +24,7 @@ const LOGIN: IRoute = {
 /**
  * Signup page
  */
-const SIGNUP: IRoute = {
+const SIGNUP: NonIndexRouteObject = {
   path: ROUTE_PATHS.signup,
   element: <Signup />,
 }
@@ -42,7 +32,7 @@ const SIGNUP: IRoute = {
 /**
  * Game page
  */
-const GAME: IRoute = {
+const GAME: NonIndexRouteObject = {
   path: ROUTE_PATHS.game,
   element: <Game />,
 }
@@ -66,7 +56,7 @@ export const rootLoader: TRootLoader = async () => {
   }
 }
 
-const ROOT: IRoute = {
+const ROOT: NonIndexRouteObject = {
   path: ROUTE_PATHS.root,
   element: <Root />,
   children: [LOGIN, SIGNUP, GAME],

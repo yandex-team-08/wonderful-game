@@ -8,7 +8,7 @@ import App from './App'
 // @ts-ignore
 global.fetch = jest.fn(() =>
   Promise.resolve({ json: () => Promise.resolve('hey') })
-)
+);
 
 test('Document has title', async () => {
   render(<App />)

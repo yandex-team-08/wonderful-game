@@ -42,6 +42,7 @@
     "eslint-plugin-sonarjs": "^0.16.0",
     "jest": "^28",
     "jest-environment-jsdom": "^29.0.1",
+    "jest-fix-undefined": "^0.1.2",
     "lefthook": "^1.1.1",
     "prettier": "^2.7.1",
     "sass": "^1.56.1",

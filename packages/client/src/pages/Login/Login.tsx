@@ -1,27 +1,27 @@
-import { Button } from '@mui/material'
-import { Form, Formik } from 'formik'
-import { FC, useEffect } from 'react'
-import { useOutletContext } from 'react-router'
+import { Button } from '@mui/material';
+import { Form, Formik } from 'formik';
+import { FC, useEffect } from 'react';
+import { useOutletContext } from 'react-router';
 
-import styles from './Login.module.scss'
-import { validationSchema } from './utils/validationSchema'
+import styles from './Login.module.scss';
+import { validationSchema } from './utils/validationSchema';
 
-import FormikTextField from '../../components/Formik/FormikTextField'
-import { useAuth } from '../../hooks/useAuth'
-import { IOutletContext } from '../../utils/OutletContext'
+import FormikTextField from '../../components/Formik/FormikTextField';
+import { useAuth } from '../../hooks/useAuth';
+import { IOutletContext } from '../../utils/OutletContext';
 
 const initialValues = {
   login: '',
   password: '',
-}
+};
 
 const Login: FC = () => {
-  const { setPageName } = useOutletContext<IOutletContext>()
-  const { login } = useAuth()
+  const { setPageName } = useOutletContext<IOutletContext>();
+  const { login } = useAuth();
 
   useEffect(() => {
-    setPageName('Вход')
-  }, [])
+    setPageName('Вход');
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +39,7 @@ const Login: FC = () => {
         </Form>
       </Formik>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

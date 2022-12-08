@@ -1,6 +1,6 @@
-import MenuIcon from '@mui/icons-material/Menu'
-import { IconButton } from '@mui/material'
-import { FC } from 'react'
+import MenuIcon from '@mui/icons-material/Menu';
+import { IconButton } from '@mui/material';
+import { FC } from 'react';
 
 const UserMenu: FC = () => {
   return (
@@ -12,7 +12,7 @@ const UserMenu: FC = () => {
       sx={{ mr: 2 }}>
       <MenuIcon />
     </IconButton>
-  )
-}
+  );
+};
 
-export default UserMenu
+export default UserMenu;

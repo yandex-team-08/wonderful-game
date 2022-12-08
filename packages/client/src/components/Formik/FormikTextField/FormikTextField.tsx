@@ -1,7 +1,7 @@
-import { TextField } from '@mui/material'
-import { TextFieldProps } from '@mui/material/TextField/TextField'
-import { useField } from 'formik'
-import { ChangeEvent, FC, useCallback } from 'react'
+import { TextField } from '@mui/material';
+import { TextFieldProps } from '@mui/material/TextField/TextField';
+import { useField } from 'formik';
+import { ChangeEvent, FC, useCallback } from 'react';
 
 type TFormikTextFieldRequiredProps = { name: string; label: string }
 
@@ -13,15 +13,15 @@ const FormikTextField: FC<TFormikTextFieldProps> = ({
   onChange,
   ...props
 }) => {
-  const [{ value }, { error }, { setValue }] = useField(name)
+  const [{ value }, { error }, { setValue }] = useField(name);
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-      setValue(event.target.value)
-      onChange && onChange(event)
+      setValue(event.target.value);
+      onChange && onChange(event);
     },
     []
-  )
+  );
 
   return (
     <TextField
@@ -35,7 +35,7 @@ const FormikTextField: FC<TFormikTextFieldProps> = ({
       onChange={handleChange}
       {...props}
     />
-  )
-}
+  );
+};
 
-export default FormikTextField
+export default FormikTextField;

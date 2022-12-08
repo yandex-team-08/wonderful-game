@@ -1,1 +1,1 @@
-export { default } from './MainCardHeader'
+export { default } from './MainCardHeader';

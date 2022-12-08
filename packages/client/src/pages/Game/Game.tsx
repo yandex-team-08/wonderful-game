@@ -1,16 +1,16 @@
-import { FC, useEffect } from 'react'
-import { useOutletContext } from 'react-router'
+import { FC, useEffect } from 'react';
+import { useOutletContext } from 'react-router';
 
-import { IOutletContext } from '../../utils/OutletContext'
+import { IOutletContext } from '../../utils/OutletContext';
 
 const Game: FC = () => {
-  const { setPageName } = useOutletContext<IOutletContext>()
+  const { setPageName } = useOutletContext<IOutletContext>();
 
   useEffect(() => {
-    setPageName('Играть')
-  }, [])
+    setPageName('Играть');
+  }, []);
 
-  return <div>GAME PAGE</div>
-}
+  return <div>GAME PAGE</div>;
+};
 
-export default Game
+export default Game;

@@ -1,1 +1,1 @@
-export { default } from './FormikTextField'
+export { default } from './FormikTextField';

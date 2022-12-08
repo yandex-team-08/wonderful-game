@@ -1,11 +1,11 @@
-import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom'
+import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom';
 
-import { getUserData } from '../api/auth'
-import Game from '../pages/Game'
-import Login from '../pages/Login'
-import Root from '../pages/Root'
-import Signup from '../pages/Signup'
-import { IUserInfo } from '../types/pageContext'
+import { getUserData } from '../api/auth';
+import Game from '../pages/Game';
+import Login from '../pages/Login';
+import Root from '../pages/Root';
+import Signup from '../pages/Signup';
+import { IUserInfo } from '../types/pageContext';
 
 export enum ROUTE_PATHS {
   root = '/',
@@ -20,7 +20,7 @@ export enum ROUTE_PATHS {
 const LOGIN: NonIndexRouteObject = {
   path: ROUTE_PATHS.login,
   element: <Login />,
-}
+};
 
 /**
  * Signup page
@@ -28,7 +28,7 @@ const LOGIN: NonIndexRouteObject = {
 const SIGNUP: NonIndexRouteObject = {
   path: ROUTE_PATHS.signup,
   element: <Signup />,
-}
+};
 
 /**
  * Game page
@@ -36,7 +36,7 @@ const SIGNUP: NonIndexRouteObject = {
 const GAME: NonIndexRouteObject = {
   path: ROUTE_PATHS.game,
   element: <Game />,
-}
+};
 
 /**
  * Root page
@@ -48,15 +48,15 @@ export type TRootLoader = () => Promise<{
 
 export const rootLoader: TRootLoader = async () => {
   try {
-    const { data } = await getUserData()
+    const { data } = await getUserData();
 
-    return { userInfo: data, userRoutes: AUTHORIZED_ROUTES }
+    return { userInfo: data, userRoutes: AUTHORIZED_ROUTES };
   } catch (err) {
-    console.error(err)
+    console.error(err);
 
-    return { userInfo: null, userRoutes: UNAUTHORIZED_ROUTES }
+    return { userInfo: null, userRoutes: UNAUTHORIZED_ROUTES };
   }
-}
+};
 
 const ROOT: NonIndexRouteObject = {
   path: ROUTE_PATHS.root,
@@ -64,7 +64,7 @@ const ROOT: NonIndexRouteObject = {
   children: [LOGIN, SIGNUP, GAME],
   id: 'root',
   loader: rootLoader,
-}
+};
 
 /**
  * Route maps
@@ -72,11 +72,11 @@ const ROOT: NonIndexRouteObject = {
 export const AUTHORIZED_ROUTES = {
   basePath: ROUTE_PATHS.game,
   list: [ROUTE_PATHS.game],
-}
+};
 
 export const UNAUTHORIZED_ROUTES = {
   basePath: ROUTE_PATHS.login,
   list: [ROUTE_PATHS.login, ROUTE_PATHS.signup, ROUTE_PATHS.game],
-}
+};
 
-export const ROUTER = createBrowserRouter([ROOT])
+export const ROUTER = createBrowserRouter([ROOT]);

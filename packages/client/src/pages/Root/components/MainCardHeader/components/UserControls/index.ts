@@ -1,1 +1,1 @@
-export { default } from './UserControls'
+export { default } from './UserControls';

@@ -1,14 +1,14 @@
-import { Card } from '@mui/material'
-import { FC, useState } from 'react'
-import { Outlet } from 'react-router'
+import { Card } from '@mui/material';
+import { FC, useState } from 'react';
+import { Outlet } from 'react-router';
 
-import MainCardHeader from './components/MainCardHeader'
-import styles from './Root.module.scss'
+import MainCardHeader from './components/MainCardHeader';
+import styles from './Root.module.scss';
 
-import PageWrapper from '../../components/PageWrapper'
+import PageWrapper from '../../components/PageWrapper';
 
 const Root: FC = () => {
-  const [pageName, setPageName] = useState('')
+  const [pageName, setPageName] = useState('');
 
   return (
     <PageWrapper>
@@ -17,7 +17,7 @@ const Root: FC = () => {
         <Outlet context={{ setPageName }} />
       </Card>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;

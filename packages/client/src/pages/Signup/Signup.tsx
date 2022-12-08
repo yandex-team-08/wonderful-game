@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
 const Signup: FC = () => {
-  return <div>SIGNUP PAGE</div>
-}
+  return <div>SIGNUP PAGE</div>;
+};
 
-export default Signup
+export default Signup;

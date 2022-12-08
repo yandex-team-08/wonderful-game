@@ -1,19 +1,19 @@
-import { Avatar, Button, IconButton, Typography } from '@mui/material'
-import { FC, useMemo } from 'react'
+import { Avatar, Button, IconButton, Typography } from '@mui/material';
+import { FC, useMemo } from 'react';
 
-import { useAuth } from '../../../../../../../hooks/useAuth'
-import { usePageContext } from '../../../../../../../hooks/usePageContext'
+import { useAuth } from '../../../../../../../hooks/useAuth';
+import { usePageContext } from '../../../../../../../hooks/usePageContext';
 
 const Authorized: FC = () => {
-  const { userInfo } = usePageContext()
-  const { logout } = useAuth()
+  const { userInfo } = usePageContext();
+  const { logout } = useAuth();
 
-  const { first_name, second_name, display_name } = userInfo ?? {}
+  const { first_name, second_name, display_name } = userInfo ?? {};
 
   const nameString = useMemo(
     () => (!display_name ? `${first_name} ${second_name}` : display_name),
     [first_name, second_name, display_name]
-  )
+  );
 
   return (
     <>
@@ -27,7 +27,7 @@ const Authorized: FC = () => {
         <Avatar alt="Your profile picture" src="/" />
       </IconButton>
     </>
-  )
-}
+  );
+};
 
-export default Authorized
+export default Authorized;

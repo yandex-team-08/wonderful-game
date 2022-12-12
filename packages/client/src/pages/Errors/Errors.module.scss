@@ -1,3 +1,5 @@
+$BGMain: url(../../../public/BG-main.webp);
+
 .wrapper {
     position: relative;
     display: flex;
@@ -8,6 +10,8 @@
     width: 100%;
     height: 100%;
     min-width: 200px;
+    background: $BGMain;
+    background-size: cover;
     font-family: 'Inter';
     font-style: normal;
     color: #1976d2;

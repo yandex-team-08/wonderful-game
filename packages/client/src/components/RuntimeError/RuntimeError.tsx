@@ -1,8 +1,10 @@
-import styles from './ErrorBoundary.module.scss';
+import styles from './RuntimeError.module.scss';
 
-import { ErrorType } from '../../../types/errorType';
+import { ErrorType } from '../../types/errorType';
 
-export function ErrorFallback({ error,resetErrorBoundary }: ErrorType) {
+export function RuntimeError(props: ErrorType) {
+
+  const { error,resetErrorBoundary } = props;
 
   return (
     <div className={styles.wrapper}>
@@ -15,3 +17,5 @@ export function ErrorFallback({ error,resetErrorBoundary }: ErrorType) {
 }
 
 ;
+
+export default RuntimeError;

@@ -1,9 +1,10 @@
 import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom';
 
 import { getUserData } from '../api/auth';
-import Error404 from '../pages/Errors/Error-404';
+import Error404 from '../pages/Errors/Error404';
 import Game from '../pages/Game';
 import Login from '../pages/Login';
+import ProfilePage from '../pages/ProfilePage';
 import Root from '../pages/Root';
 import Signup from '../pages/Signup';
 import { IUserInfo } from '../types/pageContext';
@@ -11,6 +12,7 @@ import { IUserInfo } from '../types/pageContext';
 export enum ROUTE_PATHS {
   root = '/',
   login = '/login',
+  setting = '/setting',
   signup = '/signup',
   game = '/game',
   error404 = '/error404',
@@ -30,6 +32,14 @@ const LOGIN: NonIndexRouteObject = {
 const SIGNUP: NonIndexRouteObject = {
   path: ROUTE_PATHS.signup,
   element: <Signup />,
+};
+
+/**
+ * Profile page
+ */
+ const PROFILE: NonIndexRouteObject = {
+  path: ROUTE_PATHS.setting,
+  element: <ProfilePage />,
 };
 
 /**
@@ -71,7 +81,7 @@ export const rootLoader: TRootLoader = async () => {
 const ROOT: NonIndexRouteObject = {
   path: ROUTE_PATHS.root,
   element: <Root />,
-  children: [LOGIN, SIGNUP, GAME, ERROR404],
+  children: [LOGIN, SIGNUP, GAME, ERROR404, PROFILE],
   id: 'root',
   loader: rootLoader,
 };
@@ -81,7 +91,7 @@ const ROOT: NonIndexRouteObject = {
  */
 export const AUTHORIZED_ROUTES = {
   basePath: ROUTE_PATHS.game,
-  list: [ROUTE_PATHS.game],
+  list: [ROUTE_PATHS.game, ROUTE_PATHS.setting],
 };
 
 export const UNAUTHORIZED_ROUTES = {

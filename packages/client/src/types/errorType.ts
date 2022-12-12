@@ -1,1 +1,1 @@
-export type ErrorType = { error: Error, resetErrorBoundary: () => any };
+export type ErrorType = { error: Error, resetErrorBoundary: () => void };

@@ -1,36 +1,39 @@
 import { Gamepad } from '@mui/icons-material';
 import { Button, CircularProgress, Tooltip } from '@mui/material';
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router';
 
 import GameControl from './components/GameControl';
 import styles from './Game.module.scss';
 
-import { GameStateEnum } from '../../enums/game-state.enum';
+import { gameStateEnum } from '../../enums/gameState.enum';
 import { IOutletContext } from '../../utils/OutletContext';
 
 const Game: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();
-  const [state, setState] = useState(GameStateEnum.START);
+  const [state, setState] = useState(gameStateEnum.START);
 
   useEffect(() => {
     setPageName('Играть');
   }, []);
 
-  function handleStartGame() {
-    setState(GameStateEnum.LOADING);
-  }
+  const handleStartGame = useCallback(
+    () => {
+      setState(gameStateEnum.LOADING);
+    },
+    []
+  );
 
-  return <div className={styles.Game}>
-    <div className={styles.Game__body}>
+  return <div className={styles.wrapper}>
+    <div className={styles.game__body}>
       {{
-        [GameStateEnum.START]: <Button onClick={handleStartGame} variant="outlined">Играть</Button>,
-        [GameStateEnum.LOADING]: <CircularProgress />,
-        [GameStateEnum.GAME]: <div>Игра</div>,
+        [gameStateEnum.START]: <Button onClick={handleStartGame} variant="outlined">Играть</Button>,
+        [gameStateEnum.LOADING]: <CircularProgress />,
+        [gameStateEnum.GAME]: <div>Игра</div>,
       }[state]}
     </div>
-    <div className={styles.Game__footer}>
-      <div className={styles.Game__control}>
+    <div className={styles.game__footer}>
+      <div className={styles.game__control}>
         <Tooltip title={<GameControl/>}>
           <Gamepad color={'primary'}/>
         </Tooltip>

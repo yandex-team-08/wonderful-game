@@ -1,8 +1,10 @@
-.Game {
+.wrapper {
   display: grid;
   height: calc(100% - 64px);
   grid-template-rows: 1fr min-content;
+}
 
+.game {
   &__body {
     display: grid;
     align-items: center;

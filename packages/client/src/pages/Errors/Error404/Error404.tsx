@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,9 +11,9 @@ const Error404: FC = () => {
   const onLogin = () => { navigate('/login'); };
 
   return <div className={styles.wrapper} >
-    <h1 className={styles.h1}>404</h1>
-    <span className={styles.span}>Не туда попали...</span>
-    <a onClick={onLogin} className={styles.a}>назад в игру</a>
+    <Typography variant="h1">404</Typography>
+    <Typography variant="h2">Не туда попали...</Typography>
+    <Typography variant="h5" className={styles.link} onClick={onLogin}>назад в игру</Typography>
   </div>;
 };
 

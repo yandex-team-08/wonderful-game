@@ -15,7 +15,6 @@ export enum ROUTE_PATHS {
   setting = '/setting',
   signup = '/signup',
   game = '/game',
-  error404 = '/error404',
 }
 
 /**
@@ -51,14 +50,6 @@ const GAME: NonIndexRouteObject = {
 };
 
 /**
- * Error page
- */
- const ERROR404: NonIndexRouteObject = {
-  path: ROUTE_PATHS.error404,
-  element: <Error404 />,
-};
-
-/**
  * Root page
  */
 export type TRootLoader = () => Promise<{
@@ -81,7 +72,8 @@ export const rootLoader: TRootLoader = async () => {
 const ROOT: NonIndexRouteObject = {
   path: ROUTE_PATHS.root,
   element: <Root />,
-  children: [LOGIN, SIGNUP, GAME, ERROR404, PROFILE],
+  errorElement: <Error404 />,
+  children: [LOGIN, SIGNUP, GAME, PROFILE],
   id: 'root',
   loader: rootLoader,
 };
@@ -96,7 +88,7 @@ export const AUTHORIZED_ROUTES = {
 
 export const UNAUTHORIZED_ROUTES = {
   basePath: ROUTE_PATHS.login,
-  list: [ROUTE_PATHS.login, ROUTE_PATHS.signup, ROUTE_PATHS.game, ROUTE_PATHS.error404],
+  list: [ROUTE_PATHS.login, ROUTE_PATHS.signup, ROUTE_PATHS.game],
 };
 
 export const ROUTER = createBrowserRouter([ROOT]);

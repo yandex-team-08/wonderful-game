@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,9 +11,9 @@ const Error500: FC = () => {
   const onLogin = () => { navigate('/login'); };
 
   return <div className={styles.wrapper} >
-    <h1 className={styles.h1}>500</h1>
-    <span className={styles.span}>Уже фиксим</span>
-    <a onClick={onLogin} className={styles.a}>назад в игру</a>
+    <Typography variant="h1">500</Typography>
+    <Typography variant="h2">Уже фиксим</Typography>
+    <Typography variant="h5" className={styles.link} onClick={onLogin}>назад в игру</Typography>
   </div>;
 };
 

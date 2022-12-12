@@ -23,17 +23,6 @@ const Login: FC = () => {
     setPageName('Вход');
   }, []);
 
-  //логика для тестирования ErrorBoundary
-  // let [count, setCount] = useState({user: '', name: ''});
-
-  // function errorLog(){
-  //   setCount(count = {user: null})
-  // }
-  //добавить к детям тестируемого блока
-  //<Button type="button" onClick={errorLog}>
-          //{count}
-  // </Button>
-
   return (
     <div className={styles.wrapper}>
       <Formik<typeof initialValues>

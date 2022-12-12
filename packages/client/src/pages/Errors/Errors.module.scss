@@ -1,46 +1,33 @@
 $BGMain: url(../../../public/BG-main.webp);
 
 .wrapper {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    top: -64px;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     min-width: 200px;
     background: $BGMain;
     background-size: cover;
-    font-family: 'Inter';
-    font-style: normal;
     color: #1976d2;
 }
 
-h1{
-    font-weight: 700;
-    font-size: 96px;
-    line-height: 116px;
-}
-
-span{
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 77px;
-}
-
-a{
+.link{
     position: relative;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 44px;
-    color: #1976d2;
+    cursor: pointer;
 
     &::after{
         content: "<";
         position: absolute;
-        top: 3px;
-        left: -30px;
+        top: 2px;
+        left: -20px;
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+        color: #0861ba;
     }
 }

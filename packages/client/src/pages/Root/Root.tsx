@@ -12,17 +12,6 @@ import { RuntimeError } from '../../components/RuntimeError/RuntimeError';
 const Root: FC = () => {
   const [pageName, setPageName] = useState('');
 
-    //логика для тестирования ErrorBoundary
-  // let [count, setCount] = useState({user: '', name: ''});
-
-  // function errorLog(){
-  //   setCount(count = {user: null})
-  // }
-  //добавить к детям тестируемого блока
-  //<Button type="button" onClick={errorLog}>
-          //{count}
-  // </Button>
-
   return (
     <ErrorBoundary FallbackComponent={RuntimeError} >
     <PageWrapper>

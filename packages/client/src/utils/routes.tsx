@@ -3,6 +3,7 @@ import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom';
 import { getUserData } from '../api/auth';
 import Game from '../pages/Game';
 import Login from '../pages/Login';
+import ProfilePage from '../pages/ProfilePage';
 import Root from '../pages/Root';
 import Signup from '../pages/Signup';
 import { IUserInfo } from '../types/pageContext';
@@ -12,6 +13,7 @@ export enum ROUTE_PATHS {
   login = '/login',
   signup = '/signup',
   game = '/game',
+  setting = '/setting',
 }
 
 /**
@@ -28,6 +30,14 @@ const LOGIN: NonIndexRouteObject = {
 const SIGNUP: NonIndexRouteObject = {
   path: ROUTE_PATHS.signup,
   element: <Signup />,
+};
+
+/**
+ * Profile page
+ */
+const PROFILEPAGE: NonIndexRouteObject = {
+  path: ROUTE_PATHS.setting,
+  element: <ProfilePage />,
 };
 
 /**
@@ -61,7 +71,7 @@ export const rootLoader: TRootLoader = async () => {
 const ROOT: NonIndexRouteObject = {
   path: ROUTE_PATHS.root,
   element: <Root />,
-  children: [LOGIN, SIGNUP, GAME],
+  children: [LOGIN, SIGNUP, GAME, PROFILEPAGE],
   id: 'root',
   loader: rootLoader,
 };
@@ -71,7 +81,7 @@ const ROOT: NonIndexRouteObject = {
  */
 export const AUTHORIZED_ROUTES = {
   basePath: ROUTE_PATHS.game,
-  list: [ROUTE_PATHS.game],
+  list: [ROUTE_PATHS.game, ROUTE_PATHS.setting],
 };
 
 export const UNAUTHORIZED_ROUTES = {

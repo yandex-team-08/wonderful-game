@@ -24,22 +24,24 @@ const Game: FC = () => {
     []
   );
 
-  return <div className={styles.wrapper}>
-    <div className={styles.game__body}>
-      {{
-        [gameStateEnum.START]: <Button onClick={handleStartGame} variant="outlined">Играть</Button>,
-        [gameStateEnum.LOADING]: <CircularProgress />,
-        [gameStateEnum.GAME]: <div>Игра</div>,
-      }[state]}
-    </div>
-    <div className={styles.game__footer}>
-      <div className={styles.game__control}>
-        <Tooltip title={<GameControl/>}>
-          <Gamepad color={'primary'}/>
-        </Tooltip>
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.game__body}>
+        {{
+          [gameStateEnum.START]: <Button onClick={handleStartGame} variant="outlined">Играть</Button>,
+          [gameStateEnum.LOADING]: <CircularProgress />,
+          [gameStateEnum.GAME]: <div>Игра</div>,
+        }[state]}
+      </div>
+      <div className={styles.game__footer}>
+        <div className={styles.game__control}>
+          <Tooltip title={<GameControl/>}>
+            <Gamepad color={'primary'}/>
+          </Tooltip>
+        </div>
       </div>
     </div>
-  </div>;
+  );
 };
 
 export default Game;

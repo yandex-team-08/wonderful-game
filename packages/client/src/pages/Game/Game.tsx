@@ -1,36 +1,33 @@
 import { Gamepad } from '@mui/icons-material';
 import { Button, CircularProgress, Tooltip } from '@mui/material';
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
+import { useSelector , useDispatch } from 'react-redux';
 import { useOutletContext } from 'react-router';
 
 import GameControl from './components/GameControl';
 import styles from './Game.module.scss';
 
 import { gameStateEnum } from '../../enums/gameState.enum';
+import { loading } from '../../reducers/game.reducer';
+import { gameInterface } from '../../types/game.interface';
 import { IOutletContext } from '../../utils/OutletContext';
 
 const Game: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();
-  const [state, setState] = useState(gameStateEnum.START);
+  const status = useSelector((state: { game: gameInterface }) => state.game.status);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setPageName('Играть');
   }, []);
 
-  const handleStartGame = useCallback(
-    () => {
-      setState(gameStateEnum.LOADING);
-    },
-    []
-  );
-
   return <div className={styles.wrapper}>
     <div className={styles.game__body}>
       {{
-        [gameStateEnum.START]: <Button onClick={handleStartGame} variant="outlined">Играть</Button>,
+        [gameStateEnum.START]: <Button onClick={() => dispatch(loading())} variant="outlined">Играть</Button>,
         [gameStateEnum.LOADING]: <CircularProgress />,
-        [gameStateEnum.GAME]: <div>Игра</div>,
-      }[state]}
+        [gameStateEnum.PLAY]: <div>Игра</div>,
+      }[status]}
     </div>
     <div className={styles.game__footer}>
       <div className={styles.game__control}>

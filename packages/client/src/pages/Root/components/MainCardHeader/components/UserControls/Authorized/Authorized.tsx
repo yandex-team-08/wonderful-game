@@ -1,6 +1,7 @@
 import { Avatar, Button, IconButton, Typography } from '@mui/material';
 import { FC, useMemo } from 'react';
 
+import { avatarAPI } from '../../../../../../../api/user';
 import { useAuth } from '../../../../../../../hooks/useAuth';
 import { usePageContext } from '../../../../../../../hooks/usePageContext';
 
@@ -8,7 +9,12 @@ const Authorized: FC = () => {
   const { userInfo } = usePageContext();
   const { logout } = useAuth();
 
-  const { first_name, second_name, display_name } = userInfo ?? {};
+  const { first_name, second_name, display_name, avatar } = userInfo ?? {};
+
+  const avatarSrc = useMemo(
+    () => (!avatarAPI ? '/' : avatarAPI + avatar),
+    [avatarAPI, avatar]
+  );
 
   const nameString = useMemo(
     () => (!display_name ? `${first_name} ${second_name}` : display_name),
@@ -24,7 +30,7 @@ const Authorized: FC = () => {
         Выйти
       </Button>
       <IconButton sx={{ p: 0 }}>
-        <Avatar alt="Your profile picture" src="/" />
+        <Avatar alt="Your profile picture" src={avatarSrc} />
       </IconButton>
     </>
   );

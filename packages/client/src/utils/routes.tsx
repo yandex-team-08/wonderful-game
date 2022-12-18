@@ -15,7 +15,7 @@ export enum ROUTE_PATHS {
   signup = '/signup',
   game = '/game',
   forum = '/forum',
-  forum_page = '/forum-page',
+  forum_page = 'forum/:postId',
 }
 
 /**
@@ -43,19 +43,20 @@ const GAME: NonIndexRouteObject = {
 };
 
 /**
- * Forum
- */
-const FORUM: NonIndexRouteObject = {
-  path: ROUTE_PATHS.forum,
-  element: <Forum />,
-};
-
-/**
  * Forum page
  */
 const FORUM_PAGE: NonIndexRouteObject = {
   path: ROUTE_PATHS.forum_page,
   element: <ForumPage />,
+};
+
+/**
+ * Forum
+ */
+const FORUM: NonIndexRouteObject = {
+  path: ROUTE_PATHS.forum,
+  element: <Forum />,
+  children: [FORUM_PAGE],
 };
 
 /**
@@ -94,7 +95,6 @@ export const AUTHORIZED_ROUTES = {
   list: [
     ROUTE_PATHS.game,
     ROUTE_PATHS.forum,
-    ROUTE_PATHS.forum_page,
   ],
 };
 
@@ -105,7 +105,6 @@ export const UNAUTHORIZED_ROUTES = {
     ROUTE_PATHS.signup,
     ROUTE_PATHS.game,
     ROUTE_PATHS.forum,
-    ROUTE_PATHS.forum_page,
   ],
 };
 

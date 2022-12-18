@@ -4,17 +4,13 @@ import {
   ListItemAvatar, ListItemText,
   Typography,
 } from '@mui/material';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import styles from './Message.module.scss';
 
-type ForumPageProps = {
-  id: number,
-  author: string,
-  text: string,
-};
+import { messageProps } from '../../../../types/messageProps';
 
-const Message: FC<ForumPageProps> = (props) => {
+const Message: FC<messageProps> = ({ author, text }) => {
   return (
     <div className={styles.Post}>
       <ListItem alignItems="flex-start">
@@ -22,7 +18,7 @@ const Message: FC<ForumPageProps> = (props) => {
           <Avatar>А</Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary={props.text}
+          primary={text}
           secondary={
             <>
               <Typography
@@ -31,7 +27,7 @@ const Message: FC<ForumPageProps> = (props) => {
                 variant="body2"
                 color="text.primary"
               >
-                {props.author}
+                {author}
               </Typography>
             </>
           }
@@ -42,4 +38,4 @@ const Message: FC<ForumPageProps> = (props) => {
   );
 };
 
-export default Message;
+export default React.memo(Message);

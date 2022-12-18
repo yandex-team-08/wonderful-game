@@ -24,12 +24,7 @@ const Forum: FC = () => {
   return (
     <div className={styles.wrapper}>
       <List sx={{ width: '100%' }}>
-        {MOCK.posts && MOCK.posts.map(post => <Post key={post.id}
-                                                    id={post.id}
-                                                    author={post.author}
-                                                    subject={post.subject}
-                                                    text={post.text}/>)
-        }
+        {MOCK.posts && MOCK.posts.map(post => <Post key={post.id} {...post}/>)}
       </List>
     </div>
   );

@@ -9,19 +9,19 @@ const MessageField: FC = () => {
         width: '100%',
       }}
     >
-      <TextField fullWidth
-                 multiline
-                 rows={3}
-                 InputProps={{
-                   endAdornment: <InputAdornment position="end">
-                     <IconButton
-                     >
-                       <SendIcon onClick={() => console.log('send')}/>
-                     </IconButton>
-                   </InputAdornment>,
-                 }}
-                 label="Сообщение" />
-
+      <TextField
+        fullWidth
+        multiline
+        rows={3}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">
+            <IconButton
+            >
+              <SendIcon onClick={() => console.log('send')}/>
+            </IconButton>
+          </InputAdornment>,
+        }}
+        label="Сообщение" />
     </Box>
   );
 };

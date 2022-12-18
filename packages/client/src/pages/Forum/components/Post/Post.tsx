@@ -6,25 +6,19 @@ import {
   ListItemAvatar, ListItemText,
   Typography,
 } from '@mui/material';
-import { FC, useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Post.module.scss';
 
+import { forumPageProps } from '../../../../types/forumPageProps';
 import { ROUTE_PATHS } from '../../../../utils/routes';
 
-type ForumPageProps = {
-  id: number,
-  author: string,
-  subject: string,
-  text: string,
-};
-
-const Post: FC<ForumPageProps> = (props) => {
+const Post: FC<forumPageProps> = ({ id, author, subject, text }) => {
   const navigate = useNavigate();
 
   const handlePostClick = useCallback(() => {
-    navigate(ROUTE_PATHS.forum_page);
+    navigate(`${ROUTE_PATHS.forum}/${id}`);
   }, []);
 
   return (
@@ -38,7 +32,7 @@ const Post: FC<ForumPageProps> = (props) => {
           <Avatar>А</Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary={props.subject}
+          primary={subject}
           secondary={
             <>
               <Typography
@@ -47,9 +41,9 @@ const Post: FC<ForumPageProps> = (props) => {
                 variant="body2"
                 color="text.primary"
               >
-                {props.author}
+                {author}
               </Typography>
-              {` — ${props.text}`}
+              {` — ${text}`}
             </>
           }
         />
@@ -59,4 +53,4 @@ const Post: FC<ForumPageProps> = (props) => {
   );
 };
 
-export default Post;
+export default React.memo(Post);

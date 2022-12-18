@@ -27,11 +27,8 @@ const ForumPage: FC = () => {
     <div className={styles.wrapper}>
       <div className={styles.forumPage__body}>
         <List sx={{ width: '100%' }}>
-          {MOCK.messages && MOCK.messages.map(message => <Message key={message.id}
-                                                                  id={message.id}
-                                                                  author={message.author}
-                                                                  text={message.text}/>)
-          }
+          {MOCK.messages && MOCK.messages.map(message =>
+            <Message key={message.id} {...message}/>)}
         </List>
       </div>
       <div className={styles.forumPage__footer}>

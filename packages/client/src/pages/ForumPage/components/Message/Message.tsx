@@ -4,7 +4,7 @@ import {
   ListItemAvatar, ListItemText,
   Typography,
 } from '@mui/material';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import styles from './Message.module.scss';
 
@@ -38,4 +38,4 @@ const Message: FC<messageProps> = ({ author, text }) => {
   );
 };
 
-export default React.memo(Message);
+export default Message;

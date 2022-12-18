@@ -6,7 +6,7 @@ import {
   ListItemAvatar, ListItemText,
   Typography,
 } from '@mui/material';
-import React, { FC, useCallback } from 'react';
+import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Post.module.scss';
@@ -53,4 +53,4 @@ const Post: FC<forumPageProps> = ({ id, author, subject, text }) => {
   );
 };
 
-export default React.memo(Post);
+export default Post;

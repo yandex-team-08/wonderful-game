@@ -1,5 +1,5 @@
 import { List } from '@mui/material';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router';
 
 import Message from './components/Message';
@@ -18,6 +18,8 @@ const ForumPage: FC = () => {
       { id: 3, author: 'Автор', text: 'Текст' },
     ],
   };
+  const messageList = useMemo(() => MOCK.messages?.map(message =>
+    <Message key={message.id} {...message}/>), [MOCK.messages]);
 
   useEffect(() => {
     setPageName('Форум');
@@ -26,10 +28,7 @@ const ForumPage: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.forumPage__body}>
-        <List sx={{ width: '100%' }}>
-          {MOCK.messages && MOCK.messages.map(message =>
-            <Message key={message.id} {...message}/>)}
-        </List>
+        <List sx={{ width: '100%' }}>{messageList}</List>
       </div>
       <div className={styles.forumPage__footer}>
         <MessageField/>

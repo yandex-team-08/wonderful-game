@@ -1,5 +1,5 @@
 import { List } from '@mui/material';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router';
 
 import Post from './components/Post';
@@ -16,6 +16,8 @@ const Forum: FC = () => {
       { id: 3, author: 'Автор', subject: 'Тема', text: 'Текст' },
     ],
   };
+  const postList = useMemo(() => MOCK.posts?.map(post =>
+    <Post key={post.id} {...post}/>), [MOCK.posts]);
 
   useEffect(() => {
     setPageName('Форум');
@@ -23,9 +25,7 @@ const Forum: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <List sx={{ width: '100%' }}>
-        {MOCK.posts && MOCK.posts.map(post => <Post key={post.id} {...post}/>)}
-      </List>
+      <List sx={{ width: '100%' }}>{postList}</List>
     </div>
   );
 };

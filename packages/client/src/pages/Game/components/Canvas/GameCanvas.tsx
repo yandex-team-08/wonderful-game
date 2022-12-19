@@ -1,6 +1,6 @@
 import { useEffect, FC, RefObject } from 'react';
 
-import { Game } from '../../../../game_modules/game';
+import { Game } from '../../../../game_modules';
 import { Scene } from '../../../../game_modules/Scene';
 
 interface IGameCanvasProps {

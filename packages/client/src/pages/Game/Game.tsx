@@ -3,7 +3,6 @@ import { Button, CircularProgress, Tooltip } from '@mui/material';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useOutletContext } from 'react-router';
 
-import { GameCanvas } from './components/Canvas';
 import GameControl from './components/GameControl';
 import styles from './Game.module.scss';
 
@@ -21,9 +20,12 @@ const Game: FC = () => {
     setPageName('Играть');
   }, []);
 
-  const handleStartGame = useCallback(() => {
-    setState(gameStateEnum.GAME);
-  }, []);
+  const handleStartGame = useCallback(
+    () => {
+      setState(gameStateEnum.LOADING);
+    },
+    []
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -42,8 +44,8 @@ const Game: FC = () => {
       </div>
       <div className={styles.game__footer}>
         <div className={styles.game__control}>
-          <Tooltip title={<GameControl />}>
-            <Gamepad color={'primary'} />
+          <Tooltip title={<GameControl/>}>
+            <Gamepad color={'primary'}/>
           </Tooltip>
           {state === gameStateEnum.GAME && (
             <ResizeButton canvasRef={canvasRef} />

@@ -1,28 +1,25 @@
-import React, { useRef, useEffect } from 'react';
+import { useEffect, FC, RefObject } from 'react';
 
 import { Game } from '../../../../game_modules/game';
 import { Scene } from '../../../../game_modules/Scene';
 
-export const GameCanvas: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+interface IGameCanvasProps {
+  innerRef: RefObject<HTMLCanvasElement>;
+}
 
+export const GameCanvas: FC<IGameCanvasProps> = ({ innerRef }) => {
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = innerRef.current;
 
     if (canvas) {
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-
-      const context = canvasRef.current!.getContext('2d');
+      const context = canvas.getContext('2d');
       if (context === null) throw new Error('canvas context is null');
 
       const canvasScene = new Scene(canvas.width, canvas.height);
       const game = new Game(canvasScene, context);
       game.start();
     }
-  }, [canvasRef]);
+  }, [innerRef.current]);
 
-  return <canvas ref={canvasRef}></canvas>;
+  return <canvas ref={innerRef}></canvas>;
 };

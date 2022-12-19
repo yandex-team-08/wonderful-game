@@ -4,6 +4,7 @@ import { getUserData } from '../api/auth';
 import Forum from '../pages/Forum';
 import ForumPage from '../pages/ForumPage';
 import Game from '../pages/Game';
+import { Leaderboard } from '../pages/Leaderboard';
 import Login from '../pages/Login';
 import Root from '../pages/Root';
 import Signup from '../pages/Signup';
@@ -14,6 +15,7 @@ export enum ROUTE_PATHS {
   login = '/login',
   signup = '/signup',
   game = '/game',
+  leaderboard = '/leaderboard',
   forum = '/forum',
   forum_page = 'forum/:postId',
 }
@@ -60,6 +62,14 @@ const FORUM: NonIndexRouteObject = {
 };
 
 /**
+ * Leaderboard page
+ */
+const LEADERBOARD: NonIndexRouteObject = {
+  path: ROUTE_PATHS.leaderboard,
+  element: <Leaderboard />,
+};
+
+/**
  * Root page
  */
 export type TRootLoader = () => Promise<{
@@ -82,7 +92,7 @@ export const rootLoader: TRootLoader = async () => {
 const ROOT: NonIndexRouteObject = {
   path: ROUTE_PATHS.root,
   element: <Root />,
-  children: [LOGIN, SIGNUP, GAME, FORUM, FORUM_PAGE],
+  children: [LOGIN, SIGNUP, GAME, FORUM, FORUM_PAGE, LEADERBOARD],
   id: 'root',
   loader: rootLoader,
 };
@@ -95,6 +105,7 @@ export const AUTHORIZED_ROUTES = {
   list: [
     ROUTE_PATHS.game,
     ROUTE_PATHS.forum,
+    ROUTE_PATHS.leaderboard,
   ],
 };
 
@@ -105,6 +116,7 @@ export const UNAUTHORIZED_ROUTES = {
     ROUTE_PATHS.signup,
     ROUTE_PATHS.game,
     ROUTE_PATHS.forum,
+    ROUTE_PATHS.leaderboard,
   ],
 };
 

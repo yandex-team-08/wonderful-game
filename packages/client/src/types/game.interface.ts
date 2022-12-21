@@ -1,5 +1,5 @@
-import { gameStateEnum } from '../enums/gameState.enum';
+import { EGameStatus } from '../enums/gameStatus.enum';
 
-export interface gameInterface {
-  status: gameStateEnum;
-}
+export default interface IGame {
+  status: EGameStatus,
+};

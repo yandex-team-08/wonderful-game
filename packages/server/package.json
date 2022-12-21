@@ -16,8 +16,10 @@
     "dotenv": "^16.0.2",
     "eslint-config-prettier": "^8.5.0",
     "express": "^4.18.1",
+    "formik-file-and-image-input": "^0.0.6",
     "pg": "^8.8.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "reactjs-popup": "^2.0.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

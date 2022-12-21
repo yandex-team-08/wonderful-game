@@ -1,0 +1,15 @@
+.wrapper{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 30vw;
+    border: 1px solid grey;
+    background-color: #ffffff;
+    transform: translate(-50%, -50%);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }

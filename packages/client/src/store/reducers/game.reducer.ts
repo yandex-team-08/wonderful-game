@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { EGameStatus } from '../../enums/gameStatus.enum';
-import IGame from '../../types/game.interface';
+import { IGame } from '../../types/game.interface';
 
 const initialState: IGame = {
   status: EGameStatus.START,

@@ -1,5 +1,5 @@
-import IGame from './game.interface';
+import { IGame } from './game.interface';
 
-export default interface IState {
+export interface IState {
   game: IGame,
-};
+}

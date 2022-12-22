@@ -8,7 +8,6 @@ import PopupProfilePassword from './components/PopupProfilePassword';
 import ProfileField from './components/ProfileField';
 import styles from './Profile.module.scss';
 
-import { avatarAPI } from '../../api/user';
 import { usePageContext } from '../../hooks/usePageContext';
 import { IOutletContext } from '../../utils/OutletContext';
 
@@ -17,6 +16,7 @@ const ProfilePage: FC = () => {
   const { userInfo } = usePageContext();
   const { first_name, second_name, display_name, login, email, phone, avatar } = userInfo ?? {};
 
+  const avatarAPI = 'https://ya-praktikum.tech/api/v2/resources';
   const avatarSrc = useMemo(
     () => (!avatarAPI ? '/' : avatarAPI + avatar),
     [avatarAPI, avatar]

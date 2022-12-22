@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { FC, useMemo, useCallback } from 'react';
+import { FC, useMemo } from 'react';
 import Popup from 'reactjs-popup';
 
 import styles from './PopupProfileData.module.scss';
@@ -8,19 +8,14 @@ import { validationSchema } from './utils/validationSchema';
 
 import FormikTextField from '../../../../components/Formik/FormikTextField';
 import { usePageContext } from '../../../../hooks/usePageContext';
+import { useSetting } from '../../../../hooks/useSetting';
 
 interface IMainButtonPopupProps {
     buttonText: string
   }
 
 const PopupProfileData : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
-  const test = useCallback(async (values: any) => {
-    try {
-        console.log(values);
-    } catch (err) {
-        return err;
-    }
-    }, []);
+    const { profile } = useSetting();
 
     const { userInfo } = usePageContext();
     const { first_name, second_name, display_name, login, email, phone } = userInfo ?? {};
@@ -43,7 +38,7 @@ const PopupProfileData : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
             <div  className={styles.wrapper}>
             <Formik<typeof initialValues>
                 initialValues={initialValues}
-                onSubmit={test}
+                onSubmit={profile}
                 validationSchema={validationSchema}
                 validateOnChange={false}>
                 <Form className={styles.form}>

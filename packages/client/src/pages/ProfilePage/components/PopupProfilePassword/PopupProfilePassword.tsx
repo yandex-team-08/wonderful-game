@@ -1,25 +1,20 @@
 import { Button } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { FC, useCallback } from 'react';
+import { FC } from 'react';
 import Popup from 'reactjs-popup';
 
 import styles from './PopupProfilePassword.module.scss';
 import { validationSchema } from './utils/validationSchema';
 
 import FormikTextField from '../../../../components/Formik/FormikTextField';
+import { useSetting } from '../../../../hooks/useSetting';
 
 interface IMainButtonPopupProps {
     buttonText: string
   }
 
 const PopupProfilePassword : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
-    const test = useCallback(async (values: any) => {
-        try {
-            console.log(values);
-        } catch (err) {
-            return err;
-        }
-        }, []);
+    const { password } = useSetting();
 
     const initialValues = {
         oldPassword: '',
@@ -32,7 +27,7 @@ const PopupProfilePassword : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
             <div  className={styles.wrapper}>
             <Formik<typeof initialValues>
                 initialValues={initialValues}
-                onSubmit={test}
+                onSubmit={password}
                 validationSchema={validationSchema}
                 validateOnChange={false}>
                 <Form className={styles.form}>

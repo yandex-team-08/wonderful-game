@@ -31,9 +31,9 @@ const PopupProfilePassword : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
                 validationSchema={validationSchema}
                 validateOnChange={false}>
                 <Form className={styles.form}>
-                <FormikTextField name="oldPassword" label="Старый пароль" type="password"/>
-                <FormikTextField name="newPassword" label="Новый пароль" type="password"/>
-                <FormikTextField name="repeatNewPassword" label="Повторите новый пароль" type="password"/>
+                <FormikTextField name="oldPassword" label="Старый пароль" />
+                <FormikTextField name="newPassword" label="Новый пароль" />
+                <FormikTextField name="repeatNewPassword" label="Повторите новый пароль" />
                 <Button variant="contained" type="submit" sx={{ marginTop: '15px' }}>
                     Изменить пароль
                 </Button>

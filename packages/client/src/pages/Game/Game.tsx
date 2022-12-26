@@ -24,21 +24,24 @@ const Game: FC = () => {
     setPageName('Играть');
   }, []);
 
-  const handleStartGame = useCallback(
-    () => {
-      dispatch(setStatus(EGameStatus.PLAY));
-    },
-    []
-  );
-  
+  const handleStartGame = useCallback(() => {
+    dispatch(setStatus(EGameStatus.PLAY));
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.game__body}>
-        {{
-          [EGameStatus.START]: <Button onClick={handleStartGame} variant="outlined">Играть</Button>,
-          [EGameStatus.LOADING]: <CircularProgress />,
-          [EGameStatus.PLAY]: <GameCanvas />,
-        }[status]}
+        {
+          {
+            [EGameStatus.START]: (
+              <Button onClick={handleStartGame} variant="outlined">
+                Играть
+              </Button>
+            ),
+            [EGameStatus.LOADING]: <CircularProgress />,
+            [EGameStatus.PLAY]: <GameCanvas />,
+          }[status]
+        }
       </div>
       <div className={styles.game__footer}>
         <div className={styles.game__control}>

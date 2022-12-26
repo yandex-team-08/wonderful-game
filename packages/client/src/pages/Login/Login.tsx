@@ -7,6 +7,7 @@ import styles from './Login.module.scss';
 import { validationSchema } from './utils/validationSchema';
 
 import FormikTextField from '../../components/Formik/FormikTextField';
+import { withAccessRights } from '../../HOCs';
 import { useAuth } from '../../hooks/useAuth';
 import { IOutletContext } from '../../utils/OutletContext';
 
@@ -42,4 +43,4 @@ const Login: FC = () => {
   );
 };
 
-export default Login;
+export default withAccessRights(Login);

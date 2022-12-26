@@ -6,6 +6,7 @@ import Message from './components/Message';
 import MessageField from './components/MessageField';
 import styles from './ForumPage.module.scss';
 
+import { withAccessRights } from '../../HOCs';
 import { IOutletContext } from '../../utils/OutletContext';
 
 const ForumPage: FC = () => {
@@ -18,8 +19,11 @@ const ForumPage: FC = () => {
       { id: 3, author: 'Автор', text: 'Текст' },
     ],
   };
-  const messageList = useMemo(() => MOCK.messages?.map(message =>
-    <Message key={message.id} {...message}/>), [MOCK.messages]);
+  const messageList = useMemo(
+    () =>
+      MOCK.messages?.map(message => <Message key={message.id} {...message} />),
+    [MOCK.messages]
+  );
 
   useEffect(() => {
     setPageName('Форум');
@@ -31,10 +35,10 @@ const ForumPage: FC = () => {
         <List sx={{ width: '100%' }}>{messageList}</List>
       </div>
       <div className={styles.forumPage__footer}>
-        <MessageField/>
+        <MessageField />
       </div>
     </div>
   );
 };
 
-export default ForumPage;
+export default withAccessRights(ForumPage);

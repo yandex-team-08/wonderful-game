@@ -3,10 +3,11 @@ import { FC } from 'react';
 import Authorized from './Authorized';
 import Unauthorized from './Unauthorized';
 
-import { usePageContext } from '../../../../../../hooks/usePageContext';
+import { useAppSelector } from '../../../../../../hooks/useAppSelector';
+import { selectUserInfo } from '../../../../../../store/selectors';
 
 const UserControls: FC = () => {
-  const { userInfo } = usePageContext();
+  const userInfo = useAppSelector(selectUserInfo);
 
   return <>{userInfo ? <Authorized /> : <Unauthorized />}</>;
 };

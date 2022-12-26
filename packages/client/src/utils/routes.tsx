@@ -1,14 +1,12 @@
 import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom';
 
-import { getUserData } from '../api/auth';
 import Forum from '../pages/Forum';
 import ForumPage from '../pages/ForumPage';
 import Game from '../pages/Game';
-import { Leaderboard } from '../pages/Leaderboard';
+import Leaderboard from '../pages/Leaderboard';
 import Login from '../pages/Login';
 import Root from '../pages/Root';
 import Signup from '../pages/Signup';
-import { IUserInfo } from '../types/pageContext';
 
 export enum ROUTE_PATHS {
   root = '/',
@@ -72,29 +70,11 @@ const LEADERBOARD: NonIndexRouteObject = {
 /**
  * Root page
  */
-export type TRootLoader = () => Promise<{
-  userInfo: IUserInfo | null
-  userRoutes: typeof AUTHORIZED_ROUTES
-}>
-
-export const rootLoader: TRootLoader = async () => {
-  try {
-    const { data } = await getUserData();
-
-    return { userInfo: data, userRoutes: AUTHORIZED_ROUTES };
-  } catch (err) {
-    console.error(err);
-
-    return { userInfo: null, userRoutes: UNAUTHORIZED_ROUTES };
-  }
-};
-
 const ROOT: NonIndexRouteObject = {
   path: ROUTE_PATHS.root,
   element: <Root />,
   children: [LOGIN, SIGNUP, GAME, FORUM, FORUM_PAGE, LEADERBOARD],
   id: 'root',
-  loader: rootLoader,
 };
 
 /**
@@ -102,11 +82,7 @@ const ROOT: NonIndexRouteObject = {
  */
 export const AUTHORIZED_ROUTES = {
   basePath: ROUTE_PATHS.game,
-  list: [
-    ROUTE_PATHS.game,
-    ROUTE_PATHS.forum,
-    ROUTE_PATHS.leaderboard,
-  ],
+  list: [ROUTE_PATHS.game, ROUTE_PATHS.forum, ROUTE_PATHS.leaderboard],
 };
 
 export const UNAUTHORIZED_ROUTES = {

@@ -8,6 +8,7 @@ import { validationSchema } from './utils/validationSchema';
 
 import { IUserSignUpReq } from '../../api/auth';
 import FormikTextField from '../../components/Formik/FormikTextField';
+import { withAccessRights } from '../../HOCs';
 import { useAuth } from '../../hooks/useAuth';
 import { IOutletContext } from '../../utils/OutletContext';
 
@@ -62,4 +63,4 @@ const Signup: FC = () => {
   );
 };
 
-export default Signup;
+export default withAccessRights(Signup);

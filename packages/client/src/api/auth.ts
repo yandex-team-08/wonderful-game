@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from 'axios';
 
-import { IUserInfo } from '../types/pageContext';
+import { IUserInfo } from '../types/userInfo';
 import { AUTH_API } from '../utils/constants';
 
 /**

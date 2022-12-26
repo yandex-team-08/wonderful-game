@@ -24,7 +24,6 @@ const Game: FC = () => {
     setPageName('Играть');
   }, []);
 
-
   const handleStartGame = useCallback(
     () => {
       dispatch(setStatus(EGameStatus.PLAY));

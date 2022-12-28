@@ -1,6 +1,7 @@
 import { Avatar, Button, IconButton, Typography } from '@mui/material';
 import { FC, useMemo } from 'react';
 
+import { AvatarAPI } from '../../../../../../../components/AvatarAPI/AvatarAPI';
 import { useAuth } from '../../../../../../../hooks/useAuth';
 import { usePageContext } from '../../../../../../../hooks/usePageContext';
 
@@ -10,10 +11,9 @@ const Authorized: FC = () => {
 
   const { first_name, second_name, display_name, avatar } = userInfo ?? {};
 
-  const avatarAPI = 'https://ya-praktikum.tech/api/v2/resources';
   const avatarSrc = useMemo(
-    () => (!avatarAPI ? '/' : avatarAPI + avatar),
-    [avatarAPI, avatar]
+    () => (!AvatarAPI ? '/' : AvatarAPI + avatar),
+    [AvatarAPI, avatar]
   );
 
   const nameString = useMemo(

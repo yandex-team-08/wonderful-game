@@ -1,11 +1,7 @@
-import { Button } from '@mui/material';
-import { Form, Formik } from 'formik';
-import { ImageInput } from 'formik-file-and-image-input/lib';
-import { FC } from 'react';
-import Popup from 'reactjs-popup';
+import { Button, Modal } from '@mui/material';
+import { FC, useState } from 'react';
 
 import styles from './PopupAvatar.module.scss';
-import { validationSchema } from './utils/validationSchema';
 
 import { useSetting } from '../../../../hooks/useSetting';
 
@@ -14,29 +10,24 @@ interface IMainButtonPopupProps {
   }
 
 const PopupAvatar : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
-    const { avatar } = useSetting();
+    const { changeAvatar } = useSetting();
 
-    const imageFormats = ['image/png', 'image/svg', 'image/jpeg', 'image/jpg'];
-    const initialValues = {
-        image: null,
-    };
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     return(
-        <Popup trigger={<Button variant='contained' type='button' className={styles.button}>{buttonText}</Button>} position="right center">
-            <div className={styles.wrapper}>
-                <Formik<typeof initialValues>
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={avatar}>
-                    <Form className={styles.form} id='test'>
-                        <ImageInput name='image' validFormats={imageFormats}/>
-                        <Button variant='contained' type='submit' sx={{ marginTop: '15px' }}>
-                            Загрузить аватар
-                        </Button>
-                    </Form>
-                </Formik>
-            </div>
-        </Popup>);
+        <div >
+        <Button variant='contained' type='button' sx={{ marginBottom: '25px' }} onClick={handleOpen} id={styles.button}>{buttonText}</Button>
+            <Modal open={open} onClose={handleClose}>
+                <form onSubmit={changeAvatar} className={styles.form}>
+                <input name="avatar" type="file"/>
+                    <Button variant='contained' type='submit' sx={{ marginTop: '15px' }}>
+                        Загрузить аватар
+                    </Button>
+                </form>
+            </Modal>
+        </div>);
 };
 
 export default PopupAvatar;

@@ -5,15 +5,15 @@ import { IUserProfileChange, IUserPasswordChange, setUserProfile, setUserAvatar,
 import { ROUTE_PATHS } from '../utils/routes';
 
 export interface IUseUserReturn {
-  profile: (values: IUserProfileChange) => void
-  avatar: (data: FormData) => void
-  password: (data: IUserPasswordChange) => void
+  changeProfile: (values: IUserProfileChange) => void
+  changeAvatar: (event: React.ChangeEvent<HTMLFormElement>) => void
+  changePassword: (data: IUserPasswordChange) => void
 }
 
 export const useSetting = (): IUseUserReturn => {
   const navigate = useNavigate();
 
-  const profile = useCallback(async (values: IUserProfileChange) => {
+  const changeProfile = useCallback(async (values: IUserProfileChange) => {
     try {
       await setUserProfile(values);
       navigate(ROUTE_PATHS.setting);
@@ -22,16 +22,19 @@ export const useSetting = (): IUseUserReturn => {
     }
   }, []);
 
-  const avatar = useCallback(async (data: FormData) => {
+  const changeAvatar = useCallback(async (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.target);
+
     try {
-      await setUserAvatar(data);
+      await setUserAvatar(form);
       navigate(ROUTE_PATHS.setting);
     } catch (err) {
       console.error(err);
     }
   }, []);
 
-  const password = useCallback(async (data: IUserPasswordChange) => {
+  const changePassword = useCallback(async (data: IUserPasswordChange) => {
     try {
       await setUserPassword(data);
       navigate(ROUTE_PATHS.setting);
@@ -41,8 +44,8 @@ export const useSetting = (): IUseUserReturn => {
   }, []);
 
   return {
-    profile,
-    avatar,
-    password,
+    changeProfile,
+    changeAvatar,
+    changePassword,
   };
 };

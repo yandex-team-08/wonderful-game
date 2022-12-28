@@ -17,17 +17,16 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.17",
+    "@types/react": "^18.0.26",
     "axios": "^1.2.1",
     "dotenv": "^16.0.2",
     "eslint-config-prettier": "^8.5.0",
     "formik": "^2.2.9",
-    "formik-file-and-image-input": "^0.0.6",
     "normalize.css": "^8.0.1",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.4",
-    "reactjs-popup": "^2.0.5",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -1,7 +1,6 @@
-import { Button } from '@mui/material';
+import { Button, Modal } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { FC } from 'react';
-import Popup from 'reactjs-popup';
+import { FC, useState } from 'react';
 
 import styles from './PopupProfilePassword.module.scss';
 import { validationSchema } from './utils/validationSchema';
@@ -14,7 +13,7 @@ interface IMainButtonPopupProps {
   }
 
 const PopupProfilePassword : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
-    const { password } = useSetting();
+    const { changePassword } = useSetting();
 
     const initialValues = {
         oldPassword: '',
@@ -22,25 +21,30 @@ const PopupProfilePassword : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
         repeatNewPassword: '',
       };
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return(
-        <Popup trigger={<Button variant='contained' type='button' sx={{ marginBottom: '25px' }}>{buttonText}</Button>} position="right center">
-            <div  className={styles.wrapper}>
-            <Formik<typeof initialValues>
-                initialValues={initialValues}
-                onSubmit={password}
-                validationSchema={validationSchema}
-                validateOnChange={false}>
-                <Form className={styles.form}>
-                <FormikTextField name="oldPassword" label="Старый пароль" />
-                <FormikTextField name="newPassword" label="Новый пароль" />
-                <FormikTextField name="repeatNewPassword" label="Повторите новый пароль" />
-                <Button variant="contained" type="submit" sx={{ marginTop: '15px' }}>
-                    Изменить пароль
-                </Button>
-                </Form>
-            </Formik>
-            </div>
-        </Popup>);
+        <div >
+        <Button variant='contained' type='button' sx={{ marginBottom: '25px' }} onClick={handleOpen}>{buttonText}</Button>
+            <Modal open={open} onClose={handleClose}>
+                <Formik<typeof initialValues>
+                    initialValues={initialValues}
+                    onSubmit={changePassword}
+                    validationSchema={validationSchema}
+                    validateOnChange={false}>
+                    <Form className={styles.form}>
+                        <FormikTextField name="oldPassword" label="Старый пароль" type='password'/>
+                        <FormikTextField name="newPassword" label="Новый пароль" type='password'/>
+                        <FormikTextField name="repeatNewPassword" label="Повторите новый пароль" type='password'/>
+                        <Button variant="contained" type="submit" sx={{ marginTop: '15px' }}>
+                            Изменить пароль
+                        </Button>
+                    </Form>
+                </Formik>
+            </Modal>
+        </div>);
 };
 
 export default PopupProfilePassword;

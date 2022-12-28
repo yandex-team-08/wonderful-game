@@ -9,7 +9,7 @@ import { USER_API } from '../utils/constants';
 export interface IUserProfileChange {
     first_name: string | undefined
     second_name: string | undefined
-    display_name: string | undefined
+    display_name?: string
     login: string | undefined
     email: string | undefined
     phone: string | undefined

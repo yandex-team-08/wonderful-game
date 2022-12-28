@@ -1,7 +1,6 @@
-import { Button } from '@mui/material';
+import { Button, Modal } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { FC, useMemo } from 'react';
-import Popup from 'reactjs-popup';
+import { FC, useMemo, useState } from 'react';
 
 import styles from './PopupProfileData.module.scss';
 import { validationSchema } from './utils/validationSchema';
@@ -15,7 +14,7 @@ interface IMainButtonPopupProps {
   }
 
 const PopupProfileData : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
-    const { profile } = useSetting();
+    const { changeProfile } = useSetting();
 
     const { userInfo } = usePageContext();
     const { first_name, second_name, display_name, login, email, phone } = userInfo ?? {};
@@ -33,12 +32,17 @@ const PopupProfileData : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
         phone: phone,
       };
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return(
-        <Popup trigger={<Button variant='contained' type='button' sx={{ marginBottom: '25px' }}>{buttonText}</Button>} position="right center">
-            <div  className={styles.wrapper}>
+      <div >
+      <Button variant='contained' type='button' sx={{ marginBottom: '25px' }} onClick={handleOpen}>{buttonText}</Button>
+        <Modal open={open} onClose={handleClose}>
             <Formik<typeof initialValues>
                 initialValues={initialValues}
-                onSubmit={profile}
+                onSubmit={changeProfile}
                 validationSchema={validationSchema}
                 validateOnChange={false}>
                 <Form className={styles.form}>
@@ -53,8 +57,8 @@ const PopupProfileData : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
                 </Button>
                 </Form>
             </Formik>
-            </div>
-        </Popup>);
+        </Modal>
+      </div>);
 };
 
 export default PopupProfileData;

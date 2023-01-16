@@ -7,14 +7,14 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import { getUserInfo } from '../store/actions/auth';
 import { selectUserRoutes } from '../store/selectors';
 import { getIsAuthorizedToAccessPage } from '../utils/getIsAuthorizedToAccessPage';
-import { ROUTE_PATHS } from '../utils/routes';
+import { RoutePaths } from '../utils/routes';
 
 export const withAccessRights = (WrappedComponent: FC) => {
   const ResolvedComponent: FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    const isRoot = !!useMatch(ROUTE_PATHS.root);
+    const isRoot = !!useMatch(RoutePaths.root);
 
     const userRoutes = useAppSelector(selectUserRoutes);
 

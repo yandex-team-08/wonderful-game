@@ -1,24 +1,26 @@
 import { Gamepad } from '@mui/icons-material';
 import { Button, CircularProgress, Tooltip } from '@mui/material';
-import { FC, useCallback, useEffect } from 'react';
+import { EGameStatus } from '@src/enums/gameStatus.enum';
+import { withAccessRights } from '@src/HOCs';
+import { useAppDispatch } from '@src/hooks/useAppDispatch';
+import { useAppSelector } from '@src/hooks/useAppSelector';
+import { setStatus } from '@src/store/reducers/game.reducer';
+import { selectGameStatus } from '@src/store/selectors';
+import { IOutletContext } from '@src/utils/OutletContext';
+import { FC, useCallback, useEffect, useRef } from 'react';
 import { useOutletContext } from 'react-router';
 
 import { GameCanvas } from './components/Canvas';
 import GameControl from './components/GameControl';
+import ResizeButton from './components/ResizeButton';
 import styles from './Game.module.scss';
-
-import { EGameStatus } from '../../enums/gameStatus.enum';
-import { withAccessRights } from '../../HOCs';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
-import { setStatus } from '../../store/reducers/game.reducer';
-import { selectGameStatus } from '../../store/selectors';
-import { IOutletContext } from '../../utils/OutletContext';
 
 const Game: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();
   const status = useAppSelector(selectGameStatus);
   const dispatch = useAppDispatch();
+
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     setPageName('Играть');
@@ -39,15 +41,18 @@ const Game: FC = () => {
               </Button>
             ),
             [EGameStatus.LOADING]: <CircularProgress />,
-            [EGameStatus.PLAY]: <GameCanvas />,
+            [EGameStatus.PLAY]: <GameCanvas innerRef={canvasRef} />,
           }[status]
         }
       </div>
       <div className={styles.game__footer}>
         <div className={styles.game__control}>
           <Tooltip title={<GameControl />}>
-            <Gamepad color={'primary'} />
+            <Gamepad color="primary" />
           </Tooltip>
+          {status === EGameStatus.PLAY && (
+            <ResizeButton canvasRef={canvasRef} />
+          )}
         </div>
       </div>
     </div>

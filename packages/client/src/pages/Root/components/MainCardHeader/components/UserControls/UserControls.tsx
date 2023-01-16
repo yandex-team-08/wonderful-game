@@ -1,10 +1,9 @@
+import { useAppSelector } from '@src/hooks/useAppSelector';
+import { selectUserInfo } from '@src/store/selectors';
 import { FC } from 'react';
 
 import Authorized from './Authorized';
 import Unauthorized from './Unauthorized';
-
-import { useAppSelector } from '../../../../../../hooks/useAppSelector';
-import { selectUserInfo } from '../../../../../../store/selectors';
 
 const UserControls: FC = () => {
   const userInfo = useAppSelector(selectUserInfo);

@@ -1,13 +1,12 @@
 import { List } from '@mui/material';
+import { withAccessRights } from '@src/HOCs';
+import { IOutletContext } from '@src/utils/OutletContext';
 import { FC, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router';
 
 import Message from './components/Message';
 import MessageField from './components/MessageField';
 import styles from './ForumPage.module.scss';
-
-import { withAccessRights } from '../../HOCs';
-import { IOutletContext } from '../../utils/OutletContext';
 
 const ForumPage: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();

@@ -1,4 +1,3 @@
-import { Avatar } from '@mui/material';
 import { FC, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router';
 
@@ -8,19 +7,14 @@ import PopupProfilePassword from './components/PopupProfilePassword';
 import ProfileField from './components/ProfileField';
 import styles from './Profile.module.scss';
 
-import { AvatarAPI } from '../../components/AvatarAPI/AvatarAPI';
+import AvatarComponent from '../../components/AvatarComponent';
 import { usePageContext } from '../../hooks/usePageContext';
 import { IOutletContext } from '../../utils/OutletContext';
 
 const ProfilePage: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();
   const { userInfo } = usePageContext();
-  const { first_name, second_name, display_name, login, email, phone, avatar } = userInfo ?? {};
-
-  const avatarSrc = useMemo(
-    () => (!AvatarAPI ? '/' : AvatarAPI + avatar),
-    [AvatarAPI, avatar]
-  );
+  const { first_name, second_name, display_name, login, email, phone } = userInfo ?? {};
 
   const nameString = useMemo(
     () => (!display_name ? `${first_name} ${second_name}` : display_name),
@@ -33,8 +27,8 @@ const ProfilePage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.avatar}>
-      <Avatar alt='user avatar' className={styles.avatar} src={avatarSrc}/>
+      <div className={styles.data}>
+      <AvatarComponent className={styles.avatar}/>
       <PopupAvatar buttonText={'Изменить аватар'}></PopupAvatar>
       <PopupProfileData buttonText={'Изменить данные'} ></PopupProfileData>
       <PopupProfilePassword buttonText={'Изменить пароль'} ></PopupProfilePassword>

@@ -28,8 +28,8 @@ export const setUserAvatar = (data: FormData): AxiosPromise<IUserInfo> =>
  * Изменение пароля
  */
 export interface IUserPasswordChange {
-    oldPassword: string
-    newPassword: string
+    oldPassword: string | undefined
+    newPassword: string | undefined
   }
 
 export const setUserPassword = (data: IUserPasswordChange): AxiosPromise =>

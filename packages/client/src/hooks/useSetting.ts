@@ -7,7 +7,7 @@ import { ROUTE_PATHS } from '../utils/routes';
 export interface IUseUserReturn {
   changeProfile: (values: IUserProfileChange) => void
   changeAvatar: (event: React.ChangeEvent<HTMLFormElement>) => void
-  changePassword: (data: IUserPasswordChange) => void
+  changePassword: (values: IUserPasswordChange) => void
 }
 
 export const useSetting = (): IUseUserReturn => {
@@ -34,9 +34,9 @@ export const useSetting = (): IUseUserReturn => {
     }
   }, []);
 
-  const changePassword = useCallback(async (data: IUserPasswordChange) => {
+  const changePassword = useCallback(async (values: IUserPasswordChange) => {
     try {
-      await setUserPassword(data);
+      await setUserPassword(values);
       navigate(ROUTE_PATHS.setting);
     } catch (err) {
       console.error(err);

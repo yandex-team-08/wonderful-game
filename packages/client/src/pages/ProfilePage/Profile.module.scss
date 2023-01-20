@@ -5,15 +5,18 @@
     padding: 10px;
 }
 
-.avatar{
+.data{
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px !important;
-    height: 300px !important;
     margin-bottom: 25px !important;
 }
+
+.avatar{
+    width: 300px !important;
+    height: 300px !important;
+  }
 
 .popup{
   position: absolute;

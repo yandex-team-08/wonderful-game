@@ -7,7 +7,7 @@ import { useSetting } from '../../../../hooks/useSetting';
 
 interface IMainButtonPopupProps {
     buttonText: string
-  }
+    }
 
 const PopupAvatar : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
     const { changeAvatar } = useSetting();

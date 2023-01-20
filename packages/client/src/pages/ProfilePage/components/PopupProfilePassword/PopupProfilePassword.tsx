@@ -16,9 +16,9 @@ const PopupProfilePassword : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
     const { changePassword } = useSetting();
 
     const initialValues = {
-        oldPassword: '',
-        newPassword: '',
-        repeatNewPassword: '',
+        oldPassword: undefined,
+        newPassword: undefined,
+        repeatNewPassword: undefined,
     };
 
     const [open, setOpen] = useState(false);

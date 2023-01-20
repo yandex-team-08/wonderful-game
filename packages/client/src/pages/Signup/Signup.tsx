@@ -1,4 +1,8 @@
 import { Button } from '@mui/material';
+import { IUserSignUpReq } from '@src/api/auth';
+import { withAccessRights } from '@src/HOCs';
+import { useAuth } from '@src/hooks/useAuth';
+import { IOutletContext } from '@src/utils/OutletContext';
 import { Form, Formik } from 'formik';
 import { FC, useEffect } from 'react';
 import { useOutletContext } from 'react-router';
@@ -6,10 +10,7 @@ import { useOutletContext } from 'react-router';
 import styles from './Signup.module.scss';
 import { validationSchema } from './utils/validationSchema';
 
-import { IUserSignUpReq } from '../../api/auth';
 import FormikTextField from '../../components/Formik/FormikTextField';
-import { useAuth } from '../../hooks/useAuth';
-import { IOutletContext } from '../../utils/OutletContext';
 
 const initialValues = {
   first_name: '',
@@ -62,4 +63,4 @@ const Signup: FC = () => {
   );
 };
 
-export default Signup;
+export default withAccessRights(Signup);

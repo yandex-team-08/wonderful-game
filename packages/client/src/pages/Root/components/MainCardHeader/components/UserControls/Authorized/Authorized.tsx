@@ -9,7 +9,7 @@ const Authorized: FC = () => {
   const { userInfo } = usePageContext();
   const { logout } = useAuth();
 
-  const { first_name, second_name, display_name, avatar } = userInfo ?? {};
+  const { first_name, second_name, display_name, avatar } = userInfo || {};
 
   const avatarSrc = useMemo(
     () => (!AvatarAPI ? '/' : AvatarAPI + avatar),

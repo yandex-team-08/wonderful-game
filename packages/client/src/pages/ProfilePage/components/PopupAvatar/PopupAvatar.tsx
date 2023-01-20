@@ -18,7 +18,7 @@ const PopupAvatar : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
 
     return(
         <div >
-        <Button variant='contained' type='button' sx={{ marginBottom: '25px' }} onClick={handleOpen} id={styles.button}>{buttonText}</Button>
+        <Button variant='contained' type='button' sx={{ marginBottom: '25px' }} onClick={handleOpen} className={styles.button}>{buttonText}</Button>
             <Modal open={open} onClose={handleClose}>
                 <form onSubmit={changeAvatar} className={styles.form}>
                 <input name="avatar" type="file"/>

@@ -9,12 +9,14 @@ interface IMainProfileFieldProps {
   }
 
 const ProfileField : FC<IMainProfileFieldProps> = ({ fieldName, fieldText }) =>  {
-    return(<>
-            <Divider textAlign='left'>{fieldName}</Divider>
-            <ListItem className={styles.item}>
-              <Typography variant='h6' className={styles.text}>{fieldText}</Typography>
-            </ListItem></>
-        );
+  return(
+    <>
+    <Divider textAlign='left'>{fieldName}</Divider>
+    <ListItem className={styles.item}>
+    <Typography variant='h6' className={styles.text}>{fieldText}</Typography>
+    </ListItem>
+    </>
+  );
 };
 
 export default ProfileField;

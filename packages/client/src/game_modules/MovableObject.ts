@@ -1,4 +1,4 @@
-import { Size, Position } from './GameTypes';
+import { Size, Position } from './types';
 
 export class BaseObject {
   protected position: Position;

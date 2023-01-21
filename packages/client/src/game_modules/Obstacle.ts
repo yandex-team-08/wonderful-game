@@ -1,5 +1,5 @@
-import { Size, Position, ObstaclesType } from './GameTypes';
 import { BaseObject } from './MovableObject';
+import { Size, Position, ObstaclesType } from './types';
 
 import Tree from '../assets/pine.png';
 import SnowMan from '../assets/snowman.png';

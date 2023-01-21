@@ -5,6 +5,7 @@ import { IGame } from '../../types/game.interface';
 
 const initialState: IGame = {
   status: EGameStatus.START,
+  score: 0,
 };
 
 export const gameSlice = createSlice({
@@ -14,9 +15,12 @@ export const gameSlice = createSlice({
     setStatus: (state: IGame, action: PayloadAction<EGameStatus>) => {
       state.status = action.payload;
     },
+    setScore: (state: IGame, action: PayloadAction<number>) => {
+      state.score = action.payload;
+    },
   },
 });
 
-export const { setStatus } = gameSlice.actions;
+export const { setStatus, setScore } = gameSlice.actions;
 
 export default gameSlice.reducer;

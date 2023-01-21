@@ -1,7 +1,6 @@
-import { Size, Position } from './GameTypes';
 import { BaseObject } from './MovableObject';
 import { Scene } from './Scene';
-import { CustomWindow } from './types';
+import { Size, Position, CustomWindow } from './types';
 
 import JumpSprite from '../assets/jump.png';
 import RunSprite from '../assets/run.png';

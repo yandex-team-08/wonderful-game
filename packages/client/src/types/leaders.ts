@@ -4,7 +4,7 @@ export type LeadersDTO = {
 
 export type LeaderDataDTO = {
     id: number
-    user: string
+    login: string
     score: number
 }
 

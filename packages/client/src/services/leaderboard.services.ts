@@ -3,11 +3,10 @@ import { LeaderDataDTO, LeaderData, LeadersReq } from '@src/types/leaders';
 import { transformLeader } from '@src/utils/apiTransformers';
 
 export const getLeadersList = async (
-    teamName: string,
     params: LeadersReq
 ): Promise<LeaderData[]> => {
     try {
-        const leadersDto = await getLeaders(teamName, params);
+        const leadersDto = await getLeaders(params);
 
         return leadersDto.data.map((leader) => {
             return transformLeader(leader.data);
@@ -25,7 +24,7 @@ export const setLeaderOntoBoard = async (
 ): Promise<void> => {
     const dto: LeaderDataDTO = {
         id: id,
-        user: userName,
+        login: userName,
         score: score,
     };
 

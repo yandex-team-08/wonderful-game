@@ -5,10 +5,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { withAccessRights } from '@src/HOCs';
-import { getLeadersList } from '@src/services/leaderboard.services';
-import { LeaderData } from '@src/types/leaders';
+import { useAppDispatch } from '@src/hooks/useAppDispatch';
+import { useAppSelector } from '@src/hooks/useAppSelector';
+import { getLeadersList } from '@src/store/actions/leaders';
+import { selectLeaders } from '@src/store/selectors';
 import { IOutletContext } from '@src/utils/OutletContext';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router';
 
 import { TableLeader } from './components/TableLeader';
@@ -16,17 +18,12 @@ import styles from './Leaderboard.module.scss';
 
 const Leaderboard: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();
-  const [leaders, setLeaders] = useState<LeaderData[]>([]);
+  const leaders = useAppSelector(selectLeaders);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setPageName('Лидерборд');
-    getLeadersList('team8', {
-      ratingFieldName: 'score',
-      cursor: 0,
-      limit: 10,
-    })
-      .then((leadersData) => setLeaders(leadersData))
-      .catch((err) => console.log(err.message));
+    dispatch(getLeadersList());
   }, []);
 
   const tableRows = useMemo(() =>

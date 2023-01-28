@@ -1,1 +1,1 @@
-export { default } from './AudoiButton';
+export { default } from './AudioButton';

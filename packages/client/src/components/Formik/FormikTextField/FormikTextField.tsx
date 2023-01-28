@@ -3,9 +3,9 @@ import { type TextFieldProps } from '@mui/material/TextField/TextField';
 import { useField } from 'formik';
 import { ChangeEvent, FC, useCallback } from 'react';
 
-type TFormikTextFieldRequiredProps = { name: string; label: string }
+type TFormikTextFieldRequiredProps = { name: string; label: string };
 
-type TFormikTextFieldProps = TextFieldProps & TFormikTextFieldRequiredProps
+type TFormikTextFieldProps = TextFieldProps & TFormikTextFieldRequiredProps;
 
 const FormikTextField: FC<TFormikTextFieldProps> = ({
   name,

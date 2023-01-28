@@ -1,5 +1,5 @@
 import SendIcon from '@mui/icons-material/Send';
-import { Box, IconButton, InputAdornment,TextField } from '@mui/material';
+import { Box, IconButton, InputAdornment, TextField } from '@mui/material';
 import { FC } from 'react';
 
 const MessageField: FC = () => {
@@ -7,21 +7,22 @@ const MessageField: FC = () => {
     <Box
       sx={{
         width: '100%',
-      }}
-    >
+      }}>
       <TextField
         fullWidth
         multiline
         rows={3}
         InputProps={{
-          endAdornment: <InputAdornment position="end">
-            <IconButton
-            >
-              <SendIcon onClick={() => console.log('send')}/>
-            </IconButton>
-          </InputAdornment>,
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton>
+                <SendIcon onClick={() => console.log('send')} />
+              </IconButton>
+            </InputAdornment>
+          ),
         }}
-        label="Сообщение" />
+        label="Сообщение"
+      />
     </Box>
   );
 };

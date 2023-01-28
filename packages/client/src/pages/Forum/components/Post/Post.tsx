@@ -1,9 +1,11 @@
 import ForumIcon from '@mui/icons-material/Forum';
 import {
-  Avatar, Divider,
+  Avatar,
+  Divider,
   IconButton,
   ListItem,
-  ListItemAvatar, ListItemText,
+  ListItemAvatar,
+  ListItemText,
   Typography,
 } from '@mui/material';
 import { forumPageProps } from '@src/types/forumPageProps';
@@ -22,11 +24,13 @@ const Post: FC<forumPageProps> = ({ id, author, subject, text }) => {
 
   return (
     <div className={styles.Post}>
-      <ListItem secondaryAction={
-        <IconButton edge="end" aria-label="delete">
-          <ForumIcon onClick={handlePostClick} />
-        </IconButton>
-      } alignItems="flex-start">
+      <ListItem
+        secondaryAction={
+          <IconButton edge="end" aria-label="delete">
+            <ForumIcon onClick={handlePostClick} />
+          </IconButton>
+        }
+        alignItems="flex-start">
         <ListItemAvatar>
           <Avatar>А</Avatar>
         </ListItemAvatar>
@@ -38,8 +42,7 @@ const Post: FC<forumPageProps> = ({ id, author, subject, text }) => {
                 sx={{ display: 'inline' }}
                 component="span"
                 variant="body2"
-                color="text.primary"
-              >
+                color="text.primary">
                 {author}
               </Typography>
               {` — ${text}`}

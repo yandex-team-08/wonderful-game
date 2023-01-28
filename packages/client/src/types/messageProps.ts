@@ -1,4 +1,4 @@
 export type messageProps = {
-  author: string,
-  text: string,
+  author: string;
+  text: string;
 };

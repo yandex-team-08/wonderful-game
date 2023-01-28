@@ -1,4 +1,7 @@
-import { createBrowserRouter, type NonIndexRouteObject } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  type NonIndexRouteObject,
+} from 'react-router-dom';
 
 import Forum from '../pages/Forum';
 import ForumPage from '../pages/ForumPage';
@@ -63,19 +66,12 @@ const ROOT: NonIndexRouteObject = {
  */
 export const AUTHORIZED_ROUTES = {
   basePath: RoutePaths.game,
-  list: [
-    RoutePaths.game,
-    RoutePaths.forum,
-    RoutePaths.leaderboard,
-  ],
+  list: [RoutePaths.game, RoutePaths.forum, RoutePaths.leaderboard],
 };
 
 export const UNAUTHORIZED_ROUTES = {
   basePath: RoutePaths.login,
-  list: [
-    RoutePaths.login,
-    RoutePaths.signup,
-  ],
+  list: [RoutePaths.login, RoutePaths.signup],
 };
 
 export const ROUTER = createBrowserRouter([ROOT]);

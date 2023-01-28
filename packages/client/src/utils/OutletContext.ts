@@ -1,3 +1,3 @@
 export interface IOutletContext {
-  setPageName: (name: string) => void
+  setPageName: (name: string) => void;
 }

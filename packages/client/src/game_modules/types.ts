@@ -1,3 +1,3 @@
 export interface CustomWindow extends Window {
-    keys: Record<string, unknown>;
+  keys: Record<string, unknown>;
 }

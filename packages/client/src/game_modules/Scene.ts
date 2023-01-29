@@ -1,4 +1,7 @@
+import BackgroundNight from '../assets/bg-night.png';
 import Background from '../assets/bg.png';
+
+const themeColor = `${window?.localStorage?.getItem('theme')}`;
 
 export class Scene {
   private readonly image: HTMLImageElement;
@@ -14,7 +17,7 @@ export class Scene {
     this._initialDimensions = [width, height];
 
     this.image = new Image();
-    this.image.src = Background;
+    this.image.src = themeColor === 'light' ? Background : BackgroundNight;
   }
 
   get width(): number {

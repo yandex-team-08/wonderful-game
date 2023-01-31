@@ -1,7 +1,3 @@
-export type LeadersDTO = {
-    data: LeaderDataDTO
-}[]
-
 export type LeaderDataDTO = {
     id: number
     login: string

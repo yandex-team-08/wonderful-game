@@ -15,7 +15,7 @@ export const getLeadersList = (): TAuthAction =>
 
         try {
             const leadersDto = await getLeaders(params);
-            const leaders = leadersDto.data.map((leader): LeaderData => {
+            const leaders = leadersDto.map((leader): LeaderData => {
                 return transformLeader(leader.data);
             });
             dispatch(setLeaders(leaders));

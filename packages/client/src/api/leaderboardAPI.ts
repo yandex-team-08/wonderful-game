@@ -1,9 +1,10 @@
-import { LeadersReq, LeadersDTO, NewLeader, LeaderDataDTO } from '@src/types/leaders';
+import { LeadersReq, NewLeader, LeaderDataDTO } from '@src/types/leaders';
 import { BASE_API, TEAM_NAME } from '@src/utils/constants';
 import axios, { AxiosPromise } from 'axios';
 
-export const getLeaders = (data: LeadersReq): AxiosPromise<LeadersDTO> =>
-    axios.post(`${BASE_API}/leaderboard/${TEAM_NAME}`, data, { withCredentials: true });
+export const getLeaders = (dataR: LeadersReq): Promise<Array<{ data: LeaderDataDTO }>> =>
+    axios.post(`${BASE_API}/leaderboard/${TEAM_NAME}`, dataR, { withCredentials: true })
+        .then(({ data }): Array<{ data: LeaderDataDTO }> => data);
 
 export const setLeader = (dto: LeaderDataDTO): AxiosPromise => {
     const requestParams: NewLeader = {

@@ -6,9 +6,8 @@ import { withAccessRights } from '@src/HOCs';
 import { useAppDispatch } from '@src/hooks/useAppDispatch';
 import { useAppSelector } from '@src/hooks/useAppSelector';
 import { useGameControl } from '@src/hooks/useGameControl';
-import { setLeaderOntoBoard } from '@src/store/actions/leaders';
 import { setStatus } from '@src/store/reducers/game.reducer';
-import { selectUserInfo, selectGameStatus, selectGameScore } from '@src/store/selectors';
+import { selectGameStatus, selectGameScore } from '@src/store/selectors';
 import { IOutletContext } from '@src/utils/OutletContext';
 import { FC, useCallback, useEffect, useRef } from 'react';
 import { useOutletContext } from 'react-router';
@@ -22,18 +21,16 @@ const Game: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();
   const status = useAppSelector(selectGameStatus);
   const score = useAppSelector(selectGameScore);
-  const userProfile = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const { handleEndOfGame } = useGameControl();
-  const { id, login } = userProfile ?? {};
 
   useEffect(() => {
     if (score) {
       setPageName(`Ваш рекорд: ${score}`);
     } else {
-      setPageName('Игрем заново');
+      setPageName('Играем заново');
     }
   }, [score]);
 
@@ -45,14 +42,7 @@ const Game: FC = () => {
   }, []);
 
   const handleEndGame = (e: GameEndEvent) => {
-    if (e.gameScore > score) {
-      handleEndOfGame(e);
-
-      if (id && login) {
-        dispatch(setLeaderOntoBoard(id, login, e.gameScore));
-      }
-    }
-
+    handleEndOfGame(e);
     dispatch(setStatus(EGameStatus.START));
   };
 

@@ -12,11 +12,11 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    setStatus: (state: IGame, action: PayloadAction<EGameStatus>) => {
-      state.status = action.payload;
+    setStatus: (state: IGame, { payload }: PayloadAction<EGameStatus>) => {
+      state.status = payload;
     },
-    setScore: (state: IGame, action: PayloadAction<number>) => {
-      state.score = action.payload;
+    setScore: (state: IGame, { payload }: PayloadAction<number>) => {
+      state.score = payload;
     },
   },
 });

@@ -20,7 +20,7 @@ export const GameCanvas: FC<IGameCanvasProps> = ({ innerRef, onGameOver }) => {
       const game = new Game(canvasScene, context, onGameOver);
       game.start();
     }
-  }, [innerRef.current, onGameOver]);
+  }, [innerRef.current]);
 
   return <canvas ref={innerRef}></canvas>;
 };

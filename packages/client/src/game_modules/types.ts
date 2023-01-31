@@ -7,12 +7,12 @@ export type Position = {
     yPos: number;
 };
 
-export type Size = {
+export type TSize = {
     width: number;
     height: number;
 };
 
-export enum ObstaclesType {
+export enum Obstacles {
     GroundObject = 0,
     FlyingObject = 1,
 }

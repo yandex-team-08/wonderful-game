@@ -17,7 +17,7 @@ export class Scene {
     this._initialDimensions = [width, height];
 
     this.image = new Image();
-    this.image.src = themeColor === 'light' ? Background : BackgroundNight;
+    this.image.src = themeColor === 'dark' ? BackgroundNight : Background;
   }
 
   get width(): number {

@@ -1,4 +1,5 @@
-import { Button, Tooltip, Switch } from '@mui/material';
+import { Button } from '@mui/material';
+import ThemeChecked from '@src/themes/ThemeChecked';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,9 +18,7 @@ const Unauthorized: FC = () => {
 
   return (
     <>
-      <Tooltip title="Переключатель темной темы">
-        <Switch />
-      </Tooltip>
+      <ThemeChecked />
       <Button onClick={handleSignupClick} color="secondary" variant="outlined" sx={{ color: 'white' }}>
         Зарегистрироваться
       </Button>

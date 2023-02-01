@@ -1,4 +1,5 @@
 import { Avatar, Button, IconButton, Typography } from '@mui/material';
+import ThemeChecked from '@src/themes/ThemeChecked';
 import { FC, useMemo } from 'react';
 
 import { useAppSelector } from '../../../../../../../hooks/useAppSelector';
@@ -17,6 +18,7 @@ const Authorized: FC = () => {
 
   return (
     <>
+      <ThemeChecked/>
       <Typography component="div" sx={{ mr: 1 }} color="inherit">
         {nameString}
       </Typography>

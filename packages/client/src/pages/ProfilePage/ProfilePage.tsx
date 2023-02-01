@@ -21,25 +21,25 @@ const ProfilePage: FC = () => {
     [first_name, second_name, display_name]
   );
 
-    useEffect(() => {
-      setPageName('Профиль');
-    }, []);
+  useEffect(() => {
+    setPageName('Профиль');
+  }, []);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.data}>
-      <AvatarComponent className={styles.avatar}/>
-      <PopupAvatar buttonText={'Изменить аватар'}></PopupAvatar>
-      <PopupProfileData buttonText={'Изменить данные'} ></PopupProfileData>
-      <PopupProfilePassword buttonText={'Изменить пароль'} ></PopupProfilePassword>
+        <AvatarComponent className={styles.avatar} />
+        <PopupAvatar buttonText={'Изменить аватар'}></PopupAvatar>
+        <PopupProfileData buttonText={'Изменить данные'} ></PopupProfileData>
+        <PopupProfilePassword buttonText={'Изменить пароль'} ></PopupProfilePassword>
       </div>
       <div className={styles.list}>
-      <ProfileField fieldName={'Имя'} fieldText={first_name}></ProfileField>
-      <ProfileField fieldName={'Фамилия'} fieldText={second_name}></ProfileField>
-      <ProfileField fieldName={'Ник'} fieldText={nameString}></ProfileField>
-      <ProfileField fieldName={'Логин'} fieldText={login}></ProfileField>
-      <ProfileField fieldName={'Почта'} fieldText={email}></ProfileField>
-      <ProfileField fieldName={'Телефон'} fieldText={phone}></ProfileField>
+        <ProfileField fieldName={'Имя'} fieldText={first_name}></ProfileField>
+        <ProfileField fieldName={'Фамилия'} fieldText={second_name}></ProfileField>
+        <ProfileField fieldName={'Ник'} fieldText={nameString}></ProfileField>
+        <ProfileField fieldName={'Логин'} fieldText={login}></ProfileField>
+        <ProfileField fieldName={'Почта'} fieldText={email}></ProfileField>
+        <ProfileField fieldName={'Телефон'} fieldText={phone}></ProfileField>
       </div>
     </div>
   );

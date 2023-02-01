@@ -1,4 +1,4 @@
-.form{
+.form {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -11,18 +11,13 @@
   transform: translate(-50%, -50%);
 }
 
-.button{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: inherit;
-  color: #1976d2;
+.button {
+  position: relative;
+  top: -100px;
   opacity: 0;
 
   &:focus,
-  &:hover,
-  &:active {
-      opacity: 1;
-}
+  &:hover {
+    opacity: 1;
+  }
 }

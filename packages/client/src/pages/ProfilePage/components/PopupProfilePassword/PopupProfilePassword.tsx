@@ -27,7 +27,12 @@ const PopupProfilePassword : FC<IMainButtonPopupProps> = ({ buttonText }) =>  {
 
     return(
         <div >
-        <Button variant='contained' type='button' sx={{ marginBottom: '25px' }} onClick={handleOpen}>{buttonText}</Button>
+        <Button
+            variant='contained'
+            type='button'
+            sx={{ marginBottom: '25px' }}
+            onClick={handleOpen}>
+        {buttonText}</Button>
             <Modal open={open} onClose={handleClose}>
                 <Formik<typeof initialValues>
                     initialValues={initialValues}

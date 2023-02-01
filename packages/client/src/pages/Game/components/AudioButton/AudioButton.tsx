@@ -20,8 +20,6 @@ const AudioButton: FC = () => {
       setIsMusicOn(true);
       audioElementState?.pause();
     }
-
-    setIsMusicOn(!isMusicOn);
   };
 
   useEffect(() => {

@@ -10,11 +10,13 @@ import {
 } from 'sequelize-typescript';
 
 @Table({
-  timestamps: false,
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: false,
   paranoid: false,
   tableName: 'threads',
 })
-class Thread extends Model<Thread> {
+class Thread extends Model {
   @AutoIncrement
   @PrimaryKey
   @Column(DataType.INTEGER)
@@ -29,9 +31,9 @@ class Thread extends Model<Thread> {
   @Column(DataType.INTEGER)
   author_id: number;
 
-  @AllowNull(false)
-  @Column(DataType.INTEGER)
-  created_at: number;
+  @AllowNull(true)
+  @Column(DataType.STRING(999))
+  description: string;
 }
 
 export default Thread;

@@ -10,11 +10,13 @@ import {
 } from 'sequelize-typescript';
 
 @Table({
-  timestamps: false,
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: false,
   paranoid: false,
   tableName: 'users',
 })
-class User extends Model<User> {
+class User extends Model {
   @AutoIncrement
   @PrimaryKey
   @Column(DataType.INTEGER)
@@ -28,6 +30,10 @@ class User extends Model<User> {
   @AllowNull(true)
   @Column(DataType.STRING)
   avatar_path: string;
+
+  @AllowNull(false)
+  @Column(DataType.BOOLEAN)
+  is_night_mode_enabled: boolean;
 }
 
 export default User;

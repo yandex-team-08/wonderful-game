@@ -10,11 +10,13 @@ import {
 } from 'sequelize-typescript';
 
 @Table({
-  timestamps: false,
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: false,
   paranoid: false,
   tableName: 'messages',
 })
-class Message extends Model<Message> {
+class Message extends Model {
   @AutoIncrement
   @PrimaryKey
   @Column(DataType.INTEGER)
@@ -32,10 +34,6 @@ class Message extends Model<Message> {
   @AllowNull(false)
   @Column(DataType.INTEGER)
   thread_id: number;
-
-  @AllowNull(false)
-  @Column(DataType.INTEGER)
-  created_at: number;
 }
 
 export default Message;

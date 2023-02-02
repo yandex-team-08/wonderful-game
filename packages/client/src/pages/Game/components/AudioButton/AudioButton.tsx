@@ -2,9 +2,9 @@ import { VolumeUp, VolumeOff } from '@mui/icons-material';
 import { FC, useState, useRef, useEffect } from 'react';
 
 const AudioButton: FC = () => {
-    const [ isMusicOn, setIsMusicOn ] = useState(true);
-    const [ audioContextState, setAudioContext ] = useState<AudioContext | null>(null);
-    const [ audioElementState, setAudioElement ] = useState<HTMLAudioElement | null>(null);
+    const [isMusicOn, setIsMusicOn] = useState(true);
+    const [audioContextState, setAudioContext] = useState<AudioContext | null>(null);
+    const [audioElementState, setAudioElement] = useState<HTMLAudioElement | null>(null);
     const audioElement = useRef(null);
 
     const handleMusic = () => {
@@ -17,8 +17,6 @@ const AudioButton: FC = () => {
             setIsMusicOn(true);
             audioElementState?.pause();
         }
-
-        setIsMusicOn(!isMusicOn);
     };
 
     useEffect(() => {
@@ -28,10 +26,10 @@ const AudioButton: FC = () => {
     }, [audioElement]);
 
     return (
-    <>
-    <audio ref={audioElement} src='../../src/audio/main-sound.mp3' />
-    {isMusicOn ? <VolumeOff color='primary' onClick={handleMusic}/> : <VolumeUp color='primary' onClick={handleMusic}/>}
-    </>
+        <>
+            <audio ref={audioElement} src='../../src/audio/main-sound.mp3' />
+            {isMusicOn ? <VolumeOff color='primary' onClick={handleMusic} /> : <VolumeUp color='primary' onClick={handleMusic} />}
+        </>
     );
 };
 

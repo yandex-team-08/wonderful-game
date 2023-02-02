@@ -54,7 +54,7 @@ const Game: FC = () => {
           {status === EGameStatus.PLAY && (
             <ResizeButton canvasRef={canvasRef} />
           )}
-          <AudioButton/>
+          <AudioButton />
         </div>
       </div>
     </div>

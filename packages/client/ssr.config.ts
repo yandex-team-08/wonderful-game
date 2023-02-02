@@ -14,6 +14,7 @@ export default defineConfig({
     format: 'cjs',
   },
   build: {
+    ssr: true,
     lib: {
       entry: path.resolve(__dirname, 'ssr.tsx'),
       name: 'Client',

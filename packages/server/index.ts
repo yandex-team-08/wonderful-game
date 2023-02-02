@@ -30,7 +30,7 @@ async function startServer() {
   let vite: ViteDevServer | undefined;
 
   const distPath = path.resolve('../client/dist/');
-  const ssrClientPath = path.resolve('../client/dist-ssr/client.cjs');
+  const ssrClientPath = path.resolve('../client/dist-ssr/ssr.cjs');
   const srcPath = path.resolve('../client');
 
   if (isDev()) {

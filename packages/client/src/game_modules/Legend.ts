@@ -5,11 +5,7 @@ export class Legend {
   private _text: string;
   private readonly _fontSize: number;
 
-  constructor(
-    position: Position,
-    text: string,
-    fontSize: number,
-  ) {
+  constructor(position: Position, text: string, fontSize: number) {
     this._position = position;
     this._text = text;
     this._fontSize = fontSize;

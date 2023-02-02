@@ -1,7 +1,9 @@
 import {
-  Avatar, Divider,
+  Avatar,
+  Divider,
   ListItem,
-  ListItemAvatar, ListItemText,
+  ListItemAvatar,
+  ListItemText,
   Typography,
 } from '@mui/material';
 import { FC } from 'react';
@@ -25,8 +27,7 @@ const Message: FC<messageProps> = ({ author, text }) => {
                 sx={{ display: 'inline' }}
                 component="span"
                 variant="body2"
-                color="text.primary"
-              >
+                color="text.primary">
                 {author}
               </Typography>
             </>

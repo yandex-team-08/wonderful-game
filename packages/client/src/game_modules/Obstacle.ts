@@ -10,12 +10,7 @@ export class Obstacle extends BaseObject {
   private readonly image: HTMLImageElement;
   private readonly type: number;
 
-  constructor(
-    position: Position,
-    size: Size,
-    speed: number,
-    type: number
-  ) {
+  constructor(position: Position, size: Size, speed: number, type: number) {
     super(position, size);
     this.speed = speed;
     this.horSpeed = -speed;

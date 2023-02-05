@@ -10,7 +10,7 @@ const Error404: FC = () => {
 
   const onLogin = () => { navigate('/login'); };
 
-  return <div className={styles.wrapper} >
+  return <div >
     <Typography variant="h1">404</Typography>
     <Typography variant="h2">Не туда попали...</Typography>
     <Typography variant="h5" className={styles.link} onClick={onLogin}>назад в игру</Typography>

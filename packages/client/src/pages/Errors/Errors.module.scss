@@ -1,5 +1,3 @@
-$BGMain: url(../../../public/BG-main.webp);
-
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -8,8 +6,7 @@ $BGMain: url(../../../public/BG-main.webp);
     width: 100%;
     height: 100vh;
     min-width: 200px;
-    background: $BGMain;
-    background-size: cover;
+    background: white;
     color: #1976d2;
 }
 

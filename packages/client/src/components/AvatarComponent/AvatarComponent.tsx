@@ -14,7 +14,7 @@ const AvatarComponent: FC<IMainAvatarComponentProps> = ({ className }) => {
   const { avatar } = userInfo ?? {};
 
   const avatarSrc = useMemo(
-    () => (avatar === null ? '/' : AvatarComponentAPI + avatar),
+    () => (AvatarComponentAPI + avatar),
     [AvatarComponentAPI, avatar]
   );
 

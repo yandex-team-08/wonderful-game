@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import styles from '../Errors.module.scss';
+import styles from './Error.module.scss';
 
 const Error404: FC = () => {
 

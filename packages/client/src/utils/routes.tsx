@@ -1,6 +1,6 @@
 import { createBrowserRouter, type NonIndexRouteObject } from 'react-router-dom';
 
-import Error404 from '../pages/Errors/Error404';
+import Error404 from '../pages/Error';
 import Forum from '../pages/Forum';
 import ForumPage from '../pages/ForumPage';
 import Game from '../pages/Game';

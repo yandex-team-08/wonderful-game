@@ -1,5 +1,6 @@
 import { EGameStatus } from '../enums/gameStatus.enum';
 
 export interface IGame {
-  status: EGameStatus;
+  status: EGameStatus,
+  score: number,
 }

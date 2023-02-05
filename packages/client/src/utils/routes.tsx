@@ -1,94 +1,84 @@
-import { createBrowserRouter, NonIndexRouteObject } from 'react-router-dom';
+import { createBrowserRouter, type NonIndexRouteObject } from 'react-router-dom';
 
-import { getUserData } from '../api/auth';
 import Error404 from '../pages/Errors/Error404';
+import Forum from '../pages/Forum';
+import ForumPage from '../pages/ForumPage';
 import Game from '../pages/Game';
+import Leaderboard from '../pages/Leaderboard';
 import Login from '../pages/Login';
-import ProfilePage from '../pages/ProfilePage';
 import Root from '../pages/Root';
 import Signup from '../pages/Signup';
-import { IUserInfo } from '../types/pageContext';
 
-export enum ROUTE_PATHS {
+export enum RoutePaths {
   root = '/',
   login = '/login',
   setting = '/setting',
   signup = '/signup',
   game = '/game',
+  leaderboard = '/leaderboard',
+  forum = '/forum',
+  forumPage = 'forum/:postId',
 }
 
-/**
- * Login page
- */
-const LOGIN: NonIndexRouteObject = {
-  path: ROUTE_PATHS.login,
-  element: <Login />,
+const forumPage: NonIndexRouteObject = {
+  path: RoutePaths.forumPage,
+  element: <ForumPage />,
 };
 
-/**
- * Signup page
- */
-const SIGNUP: NonIndexRouteObject = {
-  path: ROUTE_PATHS.signup,
-  element: <Signup />,
-};
-
-/**
- * Profile page
- */
- const PROFILE: NonIndexRouteObject = {
-  path: ROUTE_PATHS.setting,
-  element: <ProfilePage />,
-};
-
-/**
- * Game page
- */
-const GAME: NonIndexRouteObject = {
-  path: ROUTE_PATHS.game,
-  element: <Game />,
-};
+const children: NonIndexRouteObject[] = [
+  {
+    path: RoutePaths.login,
+    element: <Login />,
+  },
+  {
+    path: RoutePaths.signup,
+    element: <Signup />,
+  },
+  {
+    path: RoutePaths.game,
+    element: <Game />,
+  },
+  {
+    path: RoutePaths.forum,
+    element: <Forum />,
+    children: [forumPage],
+  },
+  {
+    path: RoutePaths.leaderboard,
+    element: <Leaderboard />,
+  },
+  forumPage,
+];
 
 /**
  * Root page
  */
-export type TRootLoader = () => Promise<{
-  userInfo: IUserInfo | null
-  userRoutes: typeof AUTHORIZED_ROUTES
-}>
-
-export const rootLoader: TRootLoader = async () => {
-  try {
-    const { data } = await getUserData();
-
-    return { userInfo: data, userRoutes: AUTHORIZED_ROUTES };
-  } catch (err) {
-    console.error(err);
-
-    return { userInfo: null, userRoutes: UNAUTHORIZED_ROUTES };
-  }
-};
-
 const ROOT: NonIndexRouteObject = {
-  path: ROUTE_PATHS.root,
+  path: RoutePaths.root,
   element: <Root />,
   errorElement: <Error404 />,
-  children: [LOGIN, SIGNUP, GAME, PROFILE],
+  children,
   id: 'root',
-  loader: rootLoader,
 };
 
 /**
  * Route maps
  */
 export const AUTHORIZED_ROUTES = {
-  basePath: ROUTE_PATHS.game,
-  list: [ROUTE_PATHS.game, ROUTE_PATHS.setting],
+  basePath: RoutePaths.game,
+  list: [
+    RoutePaths.game,
+    RoutePaths.forum,
+    RoutePaths.leaderboard,
+  ],
 };
 
 export const UNAUTHORIZED_ROUTES = {
-  basePath: ROUTE_PATHS.login,
-  list: [ROUTE_PATHS.login, ROUTE_PATHS.signup, ROUTE_PATHS.game],
+  basePath: RoutePaths.login,
+  list: [
+    RoutePaths.login,
+    RoutePaths.signup,
+  ],
 };
 
 export const ROUTER = createBrowserRouter([ROOT]);

@@ -1,37 +1,20 @@
-import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from './useAppDispatch';
 
-import { IUserSigninReq, requestLogOut, requestLogIn } from '../api/auth';
-import { ROUTE_PATHS } from '../utils/routes';
+import { IUserSigninReq, IUserSignUpReq } from '../api/auth';
+import { logIn, logOut, signUp } from '../store/actions/auth';
 
 export interface IUseAuthReturn {
-  login: (data: IUserSigninReq) => void
-  logout: VoidFunction
+  login: (data: IUserSigninReq) => void;
+  logout: VoidFunction;
+  signup: (data: IUserSignUpReq) => void;
 }
 
 export const useAuth = (): IUseAuthReturn => {
-  const navigate = useNavigate();
-
-  const login = useCallback(async (data: IUserSigninReq) => {
-    try {
-      await requestLogIn(data);
-      navigate(ROUTE_PATHS.login);
-    } catch (err) {
-      return err;
-    }
-  }, []);
-
-  const logout = useCallback(async () => {
-    try {
-      await requestLogOut();
-      navigate(ROUTE_PATHS.game);
-    } catch (err) {
-      console.error(err);
-    }
-  }, []);
+  const dispatch = useAppDispatch();
 
   return {
-    login,
-    logout,
+    login: data => dispatch(logIn(data)),
+    logout: () => dispatch(logOut()),
+    signup: data => dispatch(signUp(data)),
   };
 };

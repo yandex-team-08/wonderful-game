@@ -57,6 +57,7 @@ async function startServer() {
 
     try {
       let template: string;
+      let render: (request: express.Request) => Promise<string>;
 
       if (!isDev()) {
         template = fs.readFileSync(
@@ -69,8 +70,6 @@ async function startServer() {
         template = await vite!.transformIndexHtml(url, template);
       }
 
-      let render: () => Promise<string>;
-
       if (!isDev()) {
         render = (await import(ssrClientPath)).render;
       } else {
@@ -78,7 +77,7 @@ async function startServer() {
           .render;
       }
 
-      const appHtml = await render();
+      const appHtml = await render(req);
 
       const html = template.replace('<!--ssr-outlet-->', appHtml);
 

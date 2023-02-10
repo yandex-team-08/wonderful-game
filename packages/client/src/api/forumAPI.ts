@@ -7,9 +7,6 @@ import type {
 import { SERVER_HOST } from '@src/utils/constants';
 import axios, { type AxiosPromise } from 'axios';
 
-export const _SERVER_HOST = `${SERVER_HOST}/api`;
-console.log('SERVER_HOST', SERVER_HOST);
-
 const forumApi = axios.create({
     baseURL: SERVER_HOST,
     withCredentials: true,

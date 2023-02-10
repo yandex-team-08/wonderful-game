@@ -4,4 +4,4 @@ export const AUTH_API = `${BASE_API}/auth`;
 
 export const TEAM_NAME = 'team8';
 
-export const SERVER_HOST = `${import.meta.env.VITE_SERVER_HOST}`;
+export const SERVER_HOST = 'http://localhost:3001/api';

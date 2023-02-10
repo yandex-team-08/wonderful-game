@@ -6,7 +6,7 @@ import { useAppSelector } from '@src/hooks/useAppSelector';
 import { getThreadList, setThread } from '@src/store/actions/forum';
 import { selectThreads } from '@src/store/selectors';
 import { IOutletContext } from '@src/utils/OutletContext';
-import { Formik, FormikHelpers } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
 import { FC, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router';
 
@@ -14,7 +14,7 @@ import Post from './components/Post';
 import styles from './Forum.module.scss';
 import { validationSchemaThread } from './utils/validationSchema';
 
-type TInitialVal = {
+type TInitialValue = {
   title: string,
   description: string
 };
@@ -36,12 +36,12 @@ const Forum: FC = () => {
     dispatch(getThreadList());
   }, []);
 
-  const initialVal: TInitialVal = {
+  const initialVal: TInitialValue = {
     title: '',
     description: '',
   };
 
-  const handleOnSubmit = async (values: TInitialVal, props: FormikHelpers<TInitialVal>) => {
+  const handleOnSubmit = async (values: TInitialValue, props: FormikHelpers<TInitialValue>) => {
     dispatch(setThread(values));
     props.resetForm();
   };
@@ -67,13 +67,13 @@ const Forum: FC = () => {
             } = props;
 
             return (
-              <form onSubmit={handleSubmit} className={styles.forum__footer__form}>
+              <Form onSubmit={handleSubmit} className={styles.forum__footer__form}>
                 <FormikTextField id="title" name="title" label="Введите заголовок" sx={{ width: 35 / 100 }} />
                 <FormikTextField id="description" name="description" label="Введите описание" sx={{ width: 47 / 100 }} />
                 <Button variant="contained" type="submit" disabled={isSubmitting}>
                   Создать
                 </Button>
-              </form>
+              </Form>
             );
           }}
         </Formik>

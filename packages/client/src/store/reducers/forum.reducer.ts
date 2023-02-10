@@ -41,8 +41,6 @@ export const forumSlice = createSlice({
     },
 });
 
-export const { setThreads } = forumSlice.actions;
-export const { setComments } = forumSlice.actions;
-export const { setPickedThread } = forumSlice.actions;
+export const { setThreads, setComments, setPickedThread } = forumSlice.actions;
 
 export default forumSlice.reducer;

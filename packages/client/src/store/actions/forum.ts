@@ -66,8 +66,9 @@ export const getCommentsListForThread = (): TAuthAction => async (dispatch, getS
 };
 
 export const setCommentForThread = (data: Omit<IForumCommentRequest, 'user' | 'thread_id'>): TAuthAction => async (dispatch, getState) => {
-    const userInfo = selectUserInfo(getState());
-    const parentThreadInfo = selectPickedThread(getState());
+    const state = getState();
+    const userInfo = selectUserInfo(state);
+    const parentThreadInfo = selectPickedThread(state);
 
     if (userInfo && parentThreadInfo) {
         const { id, login, avatar } = userInfo;

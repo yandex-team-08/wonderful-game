@@ -4,17 +4,17 @@ import FormikTextField from '@src/components/Formik/FormikTextField';
 import { useAppDispatch } from '@src/hooks/useAppDispatch';
 import { validationSchemaComment } from '@src/pages/Forum/utils/validationSchema';
 import { setCommentForThread } from '@src/store/actions/forum';
-import { Formik, FormikHelpers } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
 import { FC } from 'react';
 
-type TInitialVal = { content: string };
+type TInitialValue = { content: string };
 
 const MessageField: FC = () => {
   const dispatch = useAppDispatch();
 
-  const initialVal: TInitialVal = { content: '' };
+  const initialVal: TInitialValue = { content: '' };
 
-  const handleOnSubmit = async (values: TInitialVal, props: FormikHelpers<TInitialVal>) => {
+  const handleOnSubmit = async (values: TInitialValue, props: FormikHelpers<TInitialValue>) => {
     dispatch(setCommentForThread(values));
     props.resetForm();
   };
@@ -34,7 +34,7 @@ const MessageField: FC = () => {
           } = props;
 
           return (
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <FormikTextField id="content" name="content" label="Введите комментарий" fullWidth
                 multiline
                 rows={3}
@@ -42,7 +42,7 @@ const MessageField: FC = () => {
               <Button variant="contained" type="submit" disabled={isSubmitting} endIcon={<SendIcon />}>
                 Отправить
               </Button>
-            </form>
+            </Form>
           );
         }}
       </Formik>

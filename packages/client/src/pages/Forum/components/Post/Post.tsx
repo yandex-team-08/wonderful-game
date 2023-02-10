@@ -19,7 +19,6 @@ const Post: FC<IForumThreadApiModel> = ({ id, author, title, description }) => {
 
   const handlePostClick = useCallback(async () => {
     await dispatch(setPickedThread({ thread_id: id, title }));
-    // await new Promise(resolve => setTimeout(resolve, 500));
     navigate(`${RoutePaths.forum}/${id}`);
   }, []);
 

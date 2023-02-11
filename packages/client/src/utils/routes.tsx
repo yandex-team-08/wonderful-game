@@ -1,3 +1,4 @@
+import Error404 from '../pages/Error';
 import Forum from '../pages/Forum';
 import ForumPage from '../pages/ForumPage';
 import Game from '../pages/Game';
@@ -10,6 +11,7 @@ import Signup from '../pages/Signup';
 export enum RoutePaths {
   root = '/',
   login = '/login',
+  setting = '/setting',
   signup = '/signup',
   game = '/game',
   leaderboard = '/leaderboard',
@@ -58,6 +60,7 @@ const children = [
 const ROOT = {
   path: RoutePaths.root,
   element: <Root />,
+  errorElement: <Error404 />,
   children,
   id: 'root',
 };

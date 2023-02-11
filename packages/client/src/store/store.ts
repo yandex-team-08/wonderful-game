@@ -10,6 +10,7 @@ const store = configureStore({
     game: gameReducer,
     auth: authReducer,
     leaders: leadersReducer,
+    forum: forumReducer,
     profile: profileReducer,
   },
 });

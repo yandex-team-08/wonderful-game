@@ -48,4 +48,3 @@ const ProfilePage: FC = () => {
 };
 
 export default withAccessRights(ProfilePage);
-

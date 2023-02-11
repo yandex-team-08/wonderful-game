@@ -1,6 +1,7 @@
-import { Avatar, Button, IconButton, Typography } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import { FC, useMemo } from 'react';
 
+import AvatarComponent from '../../../../../../../components/AvatarComponent';
 import { useAppSelector } from '../../../../../../../hooks/useAppSelector';
 import { useAuth } from '../../../../../../../hooks/useAuth';
 import { selectUserInfo } from '../../../../../../../store/selectors';
@@ -24,7 +25,7 @@ const Authorized: FC = () => {
         Выйти
       </Button>
       <IconButton sx={{ p: 0 }}>
-        <Avatar alt="Your profile picture" src="/" />
+        <AvatarComponent />
       </IconButton>
     </>
   );

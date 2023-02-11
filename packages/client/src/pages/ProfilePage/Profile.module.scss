@@ -1,0 +1,24 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    height: 90%;
+    padding: 10px;
+}
+
+.data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px !important;
+}
+
+.avatar{
+    width: 300px !important;
+    height: 300px !important;
+}
+
+.list{
+    width: 100%;
+    margin-left: 50px;
+    cursor: default;
+}

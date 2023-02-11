@@ -3,6 +3,7 @@ import ForumPage from '../pages/ForumPage';
 import Game from '../pages/Game';
 import Leaderboard from '../pages/Leaderboard';
 import Login from '../pages/Login';
+import ProfilePage from '../pages/ProfilePage';
 import Root from '../pages/Root';
 import Signup from '../pages/Signup';
 
@@ -14,6 +15,7 @@ export enum RoutePaths {
   leaderboard = '/leaderboard',
   forum = '/forum',
   forumPage = 'forum/:postId',
+  profile = '/setting'
 }
 
 const forumPage = {
@@ -43,6 +45,10 @@ const children = [
     path: RoutePaths.leaderboard,
     element: <Leaderboard />,
   },
+  {
+    path: RoutePaths.profile,
+    element: <ProfilePage />,
+  },
   forumPage,
 ];
 
@@ -65,6 +71,7 @@ export const AUTHORIZED_ROUTES = {
     RoutePaths.game,
     RoutePaths.forum,
     RoutePaths.leaderboard,
+    RoutePaths.profile,
   ],
 };
 

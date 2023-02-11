@@ -13,7 +13,6 @@ export const changeProfile =
         async dispatch => {
             try {
                 await setUserProfile(data);
-                console.log(data);
             } catch (err) {
                 return err;
             } finally {

@@ -25,12 +25,12 @@ const PopupProfileData: FC<IMainButtonPopupProps> = ({ buttonText }) => {
   );
 
   const initialValues = {
-    first_name: first_name,
-    second_name: second_name,
+    first_name,
+    second_name,
     display_name: nameString,
-    login: login,
-    email: email,
-    phone: phone,
+    login,
+    email,
+    phone,
   };
 
   const [open, setOpen] = useState(false);

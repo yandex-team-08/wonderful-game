@@ -31,9 +31,9 @@ const ProfilePage: FC = () => {
     <div className={styles.wrapper}>
       <div className={styles.data}>
         <AvatarComponent className={styles.avatar} />
-        <PopupAvatar buttonText={'Изменить аватар'}></PopupAvatar>
-        <PopupProfileData buttonText={'Изменить данные'} ></PopupProfileData>
-        <PopupProfilePassword buttonText={'Изменить пароль'} ></PopupProfilePassword>
+        <PopupAvatar buttonText='Изменить аватар'></PopupAvatar>
+        <PopupProfileData buttonText='Изменить данные' ></PopupProfileData>
+        <PopupProfilePassword buttonText='Изменить пароль' ></PopupProfilePassword>
       </div>
       <div className={styles.list}>
         <ProfileField fieldName={'Имя'} fieldText={first_name}></ProfileField>

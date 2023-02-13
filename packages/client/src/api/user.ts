@@ -8,7 +8,7 @@ import axios, { type AxiosPromise } from 'axios';
 export interface IUserProfileChange {
     first_name: string | undefined
     second_name: string | undefined
-    display_name?: string
+    display_name: string | undefined
     login: string | undefined
     email: string | undefined
     phone: string | undefined

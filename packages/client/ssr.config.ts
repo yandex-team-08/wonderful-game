@@ -13,6 +13,10 @@ export default defineConfig({
   ssr: {
     format: 'cjs',
   },
+  define: {
+    __SERVER_PORT__: process.env.SERVER_PORT || 3001,
+    __API_SERVER_HOST__: `'${process.env.SERVER_HOST}'` || '',
+  },
   build: {
     ssr: true,
     lib: {

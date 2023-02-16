@@ -34,6 +34,7 @@ const FormikTextField: FC<TFormikTextFieldProps> = ({
       helperText={error}
       onChange={handleChange}
       {...props}
+      data-testid="field"
     />
   );
 };

@@ -4,7 +4,7 @@ dotenv.config();
 
 export default {
   moduleNameMapper: {
-    '.*\\.scss$': '<rootDir>/scssStub.js',
+    "\\.scss$": "identity-obj-proxy",
     '^@src/(.*)$': '<rootDir>/src/$1',
     '^[./a-zA-Z0-9$_-]+\\.png$': '<rootDir>/src/__mocks__/fileMock.js',
   },

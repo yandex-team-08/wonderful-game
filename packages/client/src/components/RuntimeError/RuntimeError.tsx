@@ -11,7 +11,7 @@ export function RuntimeError(props: ErrorType) {
   return (
     <div className={styles.wrapper}>
       <p className={styles.title}>Что-то пошло не так</p>
-      <div className={styles.message}>{error.message}</div>
+      <div className={styles.message} data-testid="message">{error.message}</div>
       <Button variant="contained" type="button" onClick={resetErrorBoundary}>
           Обновить
       </Button>

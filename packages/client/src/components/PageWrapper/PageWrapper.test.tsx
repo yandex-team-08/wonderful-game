@@ -28,6 +28,6 @@ it('should render children', () => {
   });
 
   expect(container.querySelector('[data-testid="wrapper"]').innerHTML).toEqual(
-    `<div>TEST_CHILDREN</div>`
+    '<div>TEST_CHILDREN</div>'
   );
 });

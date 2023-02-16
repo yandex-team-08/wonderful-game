@@ -1,9 +1,9 @@
+import { Form, Formik } from 'formik';
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 
 import FormikTextField from './FormikTextField';
-import { Form, Formik } from 'formik';
 
 let container: any = null;
 
@@ -18,7 +18,7 @@ afterEach(() => {
   container = null;
 });
 
-it('should render label', () => {
+it('should render field', () => {
   act(() => {
     render(
       <Formik
@@ -33,49 +33,9 @@ it('should render label', () => {
     );
   });
 
-  expect(
-    container.querySelector('[data-testid="field"]').querySelector('label')
-      .textContent
-  ).toEqual('TEST_LABEL');
-});
+  const field = container.querySelector('[data-testid="field"]');
 
-it('should set value', () => {
-  act(() => {
-    render(
-      <Formik
-        initialValues={{ TEST_ID: 'TEST_VALUE' }}
-        validateOnChange={false}
-        onSubmit={() => console.log('TEST_SUBMIT')}>
-        <Form>
-          <FormikTextField name="TEST_ID" label="TEST_LABEL" />
-        </Form>
-      </Formik>,
-      container
-    );
-  });
-
-  expect(
-    container.querySelector('[data-testid="field"]').querySelector('input')
-      .value
-  ).toEqual('TEST_VALUE');
-});
-
-it('should set id', () => {
-  act(() => {
-    render(
-      <Formik
-        initialValues={{ TEST_ID: 'TEST_VALUE' }}
-        validateOnChange={false}
-        onSubmit={() => console.log('TEST_SUBMIT')}>
-        <Form>
-          <FormikTextField name="TEST_ID" label="TEST_LABEL" />
-        </Form>
-      </Formik>,
-      container
-    );
-  });
-
-  expect(
-    container.querySelector('[data-testid="field"]').querySelector('input').id
-  ).toEqual('TEST_ID');
+  expect(field.querySelector('label').textContent).toEqual('TEST_LABEL');
+  expect(field.querySelector('input').value).toEqual('TEST_VALUE');
+  expect(field.querySelector('input').id).toEqual('TEST_ID');
 });

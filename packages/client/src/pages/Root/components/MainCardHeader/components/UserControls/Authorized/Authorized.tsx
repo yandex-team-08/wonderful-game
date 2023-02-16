@@ -1,10 +1,9 @@
 import { Button, IconButton, Typography } from '@mui/material';
+import AvatarComponent from '@src/components/AvatarComponent';
+import { useAppSelector } from '@src/hooks/useAppSelector';
+import { useAuth } from '@src/hooks/useAuth';
+import { selectUserInfo } from '@src/store/selectors';
 import { FC, useMemo } from 'react';
-
-import AvatarComponent from '../../../../../../../components/AvatarComponent';
-import { useAppSelector } from '../../../../../../../hooks/useAppSelector';
-import { useAuth } from '../../../../../../../hooks/useAuth';
-import { selectUserInfo } from '../../../../../../../store/selectors';
 
 const Authorized: FC = () => {
   const userInfo = useAppSelector(selectUserInfo);

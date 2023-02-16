@@ -1,10 +1,9 @@
 import { Avatar } from '@mui/material';
+import { useAppSelector } from '@src/hooks/useAppSelector';
+import { selectUserInfo } from '@src/store/selectors';
 import { FC } from 'react';
 
 import { AvatarComponentAPI } from './AvatarComponentAPI';
-
-import { useAppSelector } from '../../hooks/useAppSelector';
-import { selectUserInfo } from '../../store/selectors';
 
 interface IMainAvatarComponentProps {
     className?: string

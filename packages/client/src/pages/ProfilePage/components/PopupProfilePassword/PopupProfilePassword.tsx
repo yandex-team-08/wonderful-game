@@ -1,12 +1,11 @@
 import { Button, Modal } from '@mui/material';
+import FormikTextField from '@src/components/Formik/FormikTextField';
+import { useSetting } from '@src/hooks/useSetting';
 import { Form, Formik } from 'formik';
 import { FC, useState } from 'react';
 
 import styles from './PopupProfilePassword.module.scss';
 import { validationSchema } from './utils/validationSchema';
-
-import FormikTextField from '../../../../components/Formik/FormikTextField';
-import { useSetting } from '../../../../hooks/useSetting';
 
 interface IMainButtonPopupProps {
     buttonText: string

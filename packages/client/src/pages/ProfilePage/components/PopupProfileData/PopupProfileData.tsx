@@ -1,14 +1,13 @@
 import { Button, Modal } from '@mui/material';
+import FormikTextField from '@src/components/Formik/FormikTextField';
+import { useAppSelector } from '@src/hooks/useAppSelector';
+import { useSetting } from '@src/hooks/useSetting';
+import { selectUserInfo } from '@src/store/selectors';
 import { Form, Formik } from 'formik';
 import { FC, useMemo, useState } from 'react';
 
 import styles from './PopupProfileData.module.scss';
 import { validationSchema } from './utils/validationSchema';
-
-import FormikTextField from '../../../../components/Formik/FormikTextField';
-import { useAppSelector } from '../../../../hooks/useAppSelector';
-import { useSetting } from '../../../../hooks/useSetting';
-import { selectUserInfo } from '../../../../store/selectors';
 
 interface IMainButtonPopupProps {
   buttonText: string

@@ -6,4 +6,4 @@ export const USER_API = `${BASE_API}/user`;
 
 export const TEAM_NAME = 'team8';
 
-export const SERVER_HOST = 'http://localhost:3001/api';
+export const SERVER_API = `http://${__API_SERVER_HOST__}:${__SERVER_PORT__}/api`;

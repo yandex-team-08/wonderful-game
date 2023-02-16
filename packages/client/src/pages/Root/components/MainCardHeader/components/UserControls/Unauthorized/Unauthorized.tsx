@@ -1,8 +1,7 @@
 import { Button } from '@mui/material';
+import { RoutePaths } from '@src/utils/routes';
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { RoutePaths } from '../../../../../../../utils/routes';
 
 const Unauthorized: FC = () => {
   const navigate = useNavigate();

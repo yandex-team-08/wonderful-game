@@ -1,4 +1,8 @@
+import AvatarComponent from '@src/components/AvatarComponent';
 import { withAccessRights } from '@src/HOCs';
+import { useAppSelector } from '@src/hooks/useAppSelector';
+import { selectUserInfo } from '@src/store/selectors';
+import { IOutletContext } from '@src/utils/OutletContext';
 import { FC, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router';
 
@@ -7,11 +11,6 @@ import PopupProfileData from './components/PopupProfileData';
 import PopupProfilePassword from './components/PopupProfilePassword';
 import ProfileField from './components/ProfileField';
 import styles from './Profile.module.scss';
-
-import AvatarComponent from '../../components/AvatarComponent';
-import { useAppSelector } from '../../hooks/useAppSelector';
-import { selectUserInfo } from '../../store/selectors';
-import { IOutletContext } from '../../utils/OutletContext';
 
 const ProfilePage: FC = () => {
   const { setPageName } = useOutletContext<IOutletContext>();

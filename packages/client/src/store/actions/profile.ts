@@ -1,12 +1,12 @@
-import { TAuthAction, getUserInfo } from './auth';
-
 import {
     IUserProfileChange,
     IUserPasswordChange,
     setUserProfile,
     setUserAvatar,
     setUserPassword,
-} from '../../api/user';
+} from '@src/api/user';
+
+import { TAuthAction, getUserInfo } from './auth';
 
 export const changeProfile =
     (data: IUserProfileChange): TAuthAction =>

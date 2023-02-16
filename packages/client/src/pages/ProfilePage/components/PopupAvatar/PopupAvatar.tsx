@@ -1,9 +1,8 @@
 import { Button, Modal } from '@mui/material';
+import { useSetting } from '@src/hooks/useSetting';
 import { FC, useState } from 'react';
 
 import styles from './PopupAvatar.module.scss';
-
-import { useSetting } from '../../../../hooks/useSetting';
 
 interface IMainButtonPopupProps {
     buttonText: string

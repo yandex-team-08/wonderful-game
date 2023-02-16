@@ -1,7 +1,7 @@
-import { useAppDispatch } from './useAppDispatch';
+import { IUserProfileChange, IUserPasswordChange } from '@src/api/user';
+import { changeProfile, changeAvatar, changePassword } from '@src/store/actions/profile';
 
-import { IUserProfileChange, IUserPasswordChange } from '../api/user';
-import { changeProfile, changeAvatar, changePassword } from '../store/actions/profile';
+import { useAppDispatch } from './useAppDispatch';
 
 export interface IUseUserReturn {
     changeProfile: (values: IUserProfileChange) => void

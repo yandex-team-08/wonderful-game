@@ -6,7 +6,7 @@ import { TAuthAction } from './auth';
 
 import { selectUserInfo, selectPickedThread } from '../selectors';
 
-const handleError = (error: unknown) => {
+export const handleError = (error: unknown) => {
     if (error instanceof Error) {
         throw new Error(`Error message: ${error.message}`);
     } else {

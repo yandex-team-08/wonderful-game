@@ -2,6 +2,7 @@ import { AppBar, Toolbar, Tooltip, Typography } from '@mui/material';
 import { useNavigatorOnLine } from '@src/hooks/useNavigatorOnLine';
 import UserControls from '@src/pages/Root/components/MainCardHeader/components/UserControls';
 import UserMenu from '@src/pages/Root/components/MainCardHeader/components/UserMenu';
+import ThemeChecked from '@src/theme';
 import React, { FC } from 'react';
 
 import styles from './MainCardReader.module.scss';
@@ -32,6 +33,7 @@ const MainCardHeader: FC<IMainCardHeaderProps> = ({ pageName }) => {
           {pageName}
         </Typography>
         <OnOffIndicator />
+        <ThemeChecked />
         <UserControls />
       </Toolbar>
     </AppBar>

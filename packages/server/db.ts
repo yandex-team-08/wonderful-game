@@ -1,25 +1,46 @@
-import { Client } from 'pg';
+const {
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  POSTGRES_DB,
+  POSTGRES_PORT,
+  POSTGRES_HOST,
+} = process.env;
 
-const { POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, POSTGRES_PORT } =
-  process.env;
+import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
 
-export const createClientAndConnect = async (): Promise<Client | null> => {
+import Message from './database/tables/Message';
+import Thread from './database/tables/Thread';
+import User from './database/tables/User';
+
+export const createClientAndConnect = (): Sequelize | null => {
   try {
-    const client = new Client({
-      user: POSTGRES_USER,
-      host: 'localhost',
-      database: POSTGRES_DB,
-      password: POSTGRES_PASSWORD,
-      port: Number(POSTGRES_PORT),
+    const sequelizeOptions: SequelizeOptions = {
+      username: POSTGRES_USER ?? 'admin',
+      host: POSTGRES_HOST || 'localhost',
+      database: POSTGRES_DB ?? 'team-08-wonderful-game',
+      password: POSTGRES_PASSWORD ?? 'baguviX',
+      port: Number(POSTGRES_PORT) ?? 5432,
+      dialect: 'postgres',
+      models: [User, Message, Thread],
+    };
+
+    const sequelize = new Sequelize(sequelizeOptions);
+
+    User.hasMany(Thread, { foreignKey: 'author_id' });
+    User.hasMany(Message, { foreignKey: 'author_id' });
+    Thread.belongsTo(User, { foreignKey: 'author_id', as: 'author' });
+    Thread.hasMany(Message, { foreignKey: 'thread_id', as: 'messages' });
+    Message.belongsTo(Thread, { foreignKey: 'thread_id' });
+    Message.belongsTo(User, { foreignKey: 'author_id', as: 'author' });
+
+    sequelize.sync().then(res => {
+      console.log(
+        '  ➜ 🎸 Connected to the database with options:',
+        res.options
+      );
     });
 
-    await client.connect();
-
-    const res = await client.query('SELECT NOW()');
-    console.log('  ➜ 🎸 Connected to the database at:', res?.rows?.[0].now);
-    client.end();
-
-    return client;
+    return sequelize;
   } catch (e) {
     console.error(e);
   }

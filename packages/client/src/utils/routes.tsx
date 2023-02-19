@@ -1,5 +1,4 @@
-import { createBrowserRouter, type NonIndexRouteObject } from 'react-router-dom';
-
+import Error404 from '../pages/Error';
 import Forum from '../pages/Forum';
 import ForumPage from '../pages/ForumPage';
 import Game from '../pages/Game';
@@ -11,6 +10,7 @@ import Signup from '../pages/Signup';
 export enum RoutePaths {
   root = '/',
   login = '/login',
+  setting = '/setting',
   signup = '/signup',
   game = '/game',
   leaderboard = '/leaderboard',
@@ -18,12 +18,12 @@ export enum RoutePaths {
   forumPage = 'forum/:postId',
 }
 
-const forumPage: NonIndexRouteObject = {
+const forumPage = {
   path: RoutePaths.forumPage,
   element: <ForumPage />,
 };
 
-const children: NonIndexRouteObject[] = [
+const children = [
   {
     path: RoutePaths.login,
     element: <Login />,
@@ -51,9 +51,10 @@ const children: NonIndexRouteObject[] = [
 /**
  * Root page
  */
-const ROOT: NonIndexRouteObject = {
+const ROOT = {
   path: RoutePaths.root,
   element: <Root />,
+  errorElement: <Error404 />,
   children,
   id: 'root',
 };
@@ -78,4 +79,4 @@ export const UNAUTHORIZED_ROUTES = {
   ],
 };
 
-export const ROUTER = createBrowserRouter([ROOT]);
+export const routes = [ROOT];

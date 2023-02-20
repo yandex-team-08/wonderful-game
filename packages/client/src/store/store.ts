@@ -5,6 +5,7 @@ import forumReducer from './reducers/forum.reducer';
 import gameReducer from './reducers/game.reducer';
 import leadersReducer from './reducers/leaders.reducer';
 import profileReducer from './reducers/profile.reducer';
+import themeReducer from './reducers/theme.reducer';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     leaders: leadersReducer,
     forum: forumReducer,
     profile: profileReducer,
+    theme: themeReducer,
   },
 });
 

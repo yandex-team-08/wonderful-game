@@ -4,6 +4,7 @@ import authReducer from './reducers/auth.reducer';
 import forumReducer from './reducers/forum.reducer';
 import gameReducer from './reducers/game.reducer';
 import leadersReducer from './reducers/leaders.reducer';
+import profileReducer from './reducers/profile.reducer';
 import themeReducer from './reducers/theme.reducer';
 
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
     auth: authReducer,
     leaders: leadersReducer,
     forum: forumReducer,
+    profile: profileReducer,
     theme: themeReducer,
   },
 });

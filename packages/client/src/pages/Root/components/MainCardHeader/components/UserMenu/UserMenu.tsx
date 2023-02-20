@@ -53,6 +53,11 @@ const UserMenu: FC = () => {
             Форум
           </Link>
         </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link className={styles.link} to={RoutePaths.profile}>
+            Профиль
+          </Link>
+        </MenuItem>
       </Menu>
     </>
   );

@@ -1,0 +1,22 @@
+.form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border: 1px solid grey;
+  background-color: #ffffff;
+  transform: translate(-50%, -50%);
+}
+
+.button {
+  position: relative;
+  top: -100px;
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+}
